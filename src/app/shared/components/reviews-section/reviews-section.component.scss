@@ -1,0 +1,58 @@
+.reviews {
+  background-image: url('/images/Frame 116.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.owl-nav .owl-prev {
+  left: -20px;
+}
+
+.owl-nav .owl-next {
+  right: -20px;
+}
+
+.review {
+  height: 100%;
+}
+::ng-deep .owl-stage {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+::ng-deep .owl-item > .review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

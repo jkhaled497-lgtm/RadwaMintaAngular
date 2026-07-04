@@ -1,0 +1,41 @@
+<section class="py-7">
+    <div class="container">
+        <div class="flex items-center gap-2">
+            <div class="section-title">{{'products.title' | translate}}</div>
+            <span>{{products.length}}</span>
+        </div>
+        <span class="text-black opacity-80  mt-4 block">{{'products.filterBy' | translate}}</span>
+        @if (loadingCategories) {
+            <div class="categories flex flex-wrap items-center mt-2 gap-2 lg:gap-4">
+                <div class="w-16 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div class="w-20 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div class="w-24 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div class="w-28 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div class="w-24 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div class="w-16 h-8 bg-gray-300 rounded-lg animate-pulse"></div>
+            </div>
+        }
+        @else {
+        <div class="categories flex flex-wrap items-center mt-2 gap-2 lg:gap-4">
+            <div [class.active]="activeCategory == 'All' " (click)="getAllProducts()" class="category">{{'products.all' | translate}}</div>
+            @for (category of allCategories; track $index) {
+                <div [class.active]="activeCategory == category.name" class="category" (click)="getProductsByCategory(category.id,category.name)">{{category.name}}</div>
+            }
+        </div>
+        }
+        
+        <div class="products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-7 mx-3 sm:mx-0">
+        <!-- Product Card -->
+        @if (LoadingProducts) {
+            @for (pro of [1,2,3,4,5,6,7,8]; track $index) {
+                <app-product-card-selekton></app-product-card-selekton>
+            }
+        }
+        @else {
+        @for (product of products; track $index) {
+            <app-product-card [product]="product"></app-product-card>
+        }
+        }
+        </div>
+    </div>
+</section>

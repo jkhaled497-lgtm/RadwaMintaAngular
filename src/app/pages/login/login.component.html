@@ -1,0 +1,70 @@
+<section class="py-7">
+  <div class="container">
+    <div
+      class="login bg px-10 py-20 md:p-32 lg:p-44 bg-cover md:bg-contain min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
+    >
+      <h2
+        class="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center"
+      >
+        {{ 'login.title' | translate }}
+      </h2>
+
+      <form
+        [formGroup]="form"
+        class="md:max-w-[60%] mx-auto flex flex-col gap-5 mt-7"
+      >
+        <div>
+          <input
+            formControlName="email"
+            class="px-3 py-2 rounded-lg w-full border outline-none"
+            type="email"
+            placeholder="{{ 'login.email' | translate }}"
+          />
+          @if (form.get('email')?.touched) {
+          @if (form.get('email')?.getError('required')) {
+          <p class="text-red-500 text-sm sm:text-base">
+            {{ 'login.errors.emailRequired' | translate }}
+          </p>
+          } @if (form.get('email')?.getError('email')) {
+          <p class="text-red-500 text-sm sm:text-base">
+            {{ 'login.errors.emailInvalid' | translate }}
+          </p>
+          } }
+        </div>
+
+        <div>
+          <input
+            formControlName="password"
+            class="px-3 py-2 rounded-lg w-full border outline-none"
+            type="password"
+            placeholder="{{ 'login.password' | translate }}"
+          />
+          @if (form.get('password')?.touched &&
+          form.get('password')?.getError('required')) {
+          <p class="text-red-500 text-sm sm:text-base">
+            {{ 'login.errors.passwordRequired' | translate }}
+          </p>
+          }
+        </div>
+
+        <div>
+          <p class="text-red-500 text-sm sm:text-base">{{ errorMsg }}</p>
+          <button
+            type="submit"
+            (click)="submit()"
+            class="block cursor-pointer text-center w-full mx-auto px-8 md:px-20 py-2 md:py-3 text-base md:text-lg font-medium rounded-lg bg-[#7A4485] text-white mt-4 hover:bg-[#6a3a75] transition-colors"
+          >
+            {{ 'login.button' | translate }}
+          </button>
+        </div>
+
+        <a
+          routerLink="/forgot-password"
+          class="text-[#7A4485] font-semibold text-center"
+        >
+          {{ 'login.forgotPassword' | translate }}
+        </a>
+      </form>
+    </div>
+  </div>
+</section>

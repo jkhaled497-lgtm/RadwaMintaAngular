@@ -1,0 +1,26 @@
+<section class="py-7">
+    <div class="related-products">
+        <div class="container">
+            <h2 class="section-title text-center">{{'products.realtedProducts' | translate}}</h2>
+            <div
+            class="products flex gap-4 mt-3 overflow-x-auto snap-x snap-mandatory scroll-smooth px-2"
+            >
+                <!-- Product Card -->
+                @if (isLoading) {
+                    @for (product of [1,2,3,4]; track $index) {
+                    <div class="snap-center shrink-0 w-[80%]  md:w-64 lg:w-full lg:flex-1">
+                        <app-product-card-selekton></app-product-card-selekton>
+                    </div>
+                    }
+                }
+                @else {
+                    @for (prod of products; track $index) {
+                    <div class="snap-center shrink-0 w-[80%]  md:w-64 lg:w-full lg:flex-1 lg:max-w-[25%] py-2">
+                        <app-product-card [product]="prod"></app-product-card>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

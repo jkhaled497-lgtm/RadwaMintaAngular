@@ -1,0 +1,54 @@
+<div class="flex flex-row justify-between gap-5 sm:gap-8 md:gap-14 lg:gap-20">
+  <picture class="hidden sm:block ">
+    <img class="w-full" src="/images/radwa-education.png" alt="radwa" />
+  </picture>
+
+  <div class="max-w-3xl ms-6 ">
+    <ul class="timeline-container pt-5 relative before:absolute before:start-[-20px]">
+      @for (item of 'radwa-education.timeline' | translate; track $index) {
+        <li class="timeline-item">
+          <div class="timeline-point start-[-29px]"></div>
+          <div class="timeline-content flex flex-col gap-1 sm:gap-2 md:gap-3 lg:gap-4 text-[#333]">
+            <p class="font-bold text-base md:text-lg">
+              {{ item.date }}
+            </p>
+
+            @if (item.degree) {
+              <p class="text-base">{{ item.degree }}</p>
+            }
+
+            @if (item.faculty) {
+              <p class="text-base">{{ item.faculty }}</p>
+            }
+
+            @if (item.details) {
+              @for (item of item.details; track $index) {
+                <p class="text-base" [innerHTML]="item"></p>
+              }
+            }
+
+            @if (item.intro) {
+              <p class="text-base">{{ item.intro }}</p>
+            }
+
+            @if (item.certifications) {
+              <ul class="flex flex-col sm:gap-1 md:gap-2 lg:gap-3 ms-1 list-disc list-inside">
+                @for (cert of item.certifications; track $index) {
+                  <li>{{ cert }}</li>
+                }
+              </ul>
+            }
+
+            @if (item.points) {
+              <ul class="flex flex-col sm:gap-1 md:gap-2 lg:gap-3 ms-1 list-disc list-inside">
+                @for (point of item.points; track $index) {
+                  <li>{{ point }}</li>
+                }
+              </ul>
+            }
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

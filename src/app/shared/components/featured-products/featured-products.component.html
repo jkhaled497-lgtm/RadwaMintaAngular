@@ -1,0 +1,102 @@
+<!-- ================= PRODUCTS SECTION ================= -->
+<section class="py-7">
+  <div class="container">
+    <!-- Title -->
+    <div class="text-center">
+      <span class="section-tag">{{'home.products.tag' | translate}}</span>
+      <h2 class="section-title mt-2">
+        {{'home.products.title' | translate}}
+      </h2>
+    </div>
+
+    <!-- Product Scroll Row -->
+    <div
+      class="products flex gap-4 mt-3 overflow-x-auto snap-x snap-mandatory scroll-smooth px-2"
+    >
+      <!-- Product Card -->
+      @if (isLoading) {
+        @for (product of [1,2,3,4]; track $index) {
+          <div class="snap-center shrink-0 w-[80%]  sm:w-[47%] lg:w-full lg:flex-1">
+            <app-product-card-selekton></app-product-card-selekton>
+          </div>
+        }
+      }
+      @else {
+        @for (product of featuredProducts; track $index) {
+          <div class="snap-center shrink-0 w-[80%]  sm:w-[47%] lg:w-full lg:flex-1 py-2">
+            <app-product-card [product]="product"></app-product-card>
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Explore Button -->
+    <button routerLink="/products" class="main-btn-primary mt-7 mx-auto block">
+      {{'home.products.button' | translate}}
+    </button>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<section class="py-7">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">{{'home.products.tag' | translate}}</span>
+      <h2 class="section-title mt-2">
+        {{'home.products.title' | translate}}
+      </h2>
+    </div>
+
+    <div
+      class="products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mt-3"
+    >
+      @if (isLoading) {
+        @for (product of [1,2,3,4]; track $index) {
+          <app-product-card-selekton></app-product-card-selekton>
+        }
+      }
+      @else {
+        @for (product of featuredProducts; track $index) {
+          <app-product-card [product]="product"></app-product-card>
+        }
+      }
+    </div>
+
+    <button routerLink="/products" class="main-btn-primary mt-7 mx-auto block">
+      {{'home.products.button' | translate}}
+    </button>
+  </div>
+</section>
+ -->

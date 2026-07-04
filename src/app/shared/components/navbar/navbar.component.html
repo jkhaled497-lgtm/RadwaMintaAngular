@@ -1,0 +1,50 @@
+<header class="fixed top-0 right-0 w-full z-[1000] shadow-sm" [class.hiddenHeader]="hideHeader">
+  <div class="container">
+    <div class="header-content flex justify-between items-center">
+      <div routerLink="/home" class="logo cursor-pointer flex items-center overflow-hidden h-20">
+        <img src="/images/logo.png" class="w-36" alt="logo">
+      </div>
+
+      <nav>
+        <ul class="flex items-center list-none lg:gap-6 xl:gap-8">
+          <li><a routerLink="/home" routerLinkActive="active">{{ 'NAV.HOME' | translate }}</a></li>
+          <li><a routerLink="/products" routerLinkActive="active">{{ 'NAV.PRODUCTS' | translate }}</a></li>
+          <li><a routerLink="/story" routerLinkActive="active">{{ 'NAV.OUR_STORY' | translate }}</a></li>
+          <li><a routerLink="/quality" routerLinkActive="active">{{ 'NAV.QUALITY' | translate }}</a></li>
+          <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+          <li><a routerLink="/radwacv" routerLinkActive="active">{{'footer.owner' | translate}}</a></li>
+          <li>
+            <app-lang-change></app-lang-change>
+          </li>
+        </ul>
+      </nav>
+
+      <button id="menuBtn" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+        <span class="sr-only">{{ 'NAV.MENU' | translate }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="sidebar" [class.active]="sidebarOpen">
+  <span class="close-btn" (click)="toggleSidebar()">
+    <i class="fa-solid fa-xmark"></i>
+    <span class="sr-only">{{ 'NAV.CLOSE' | translate }}</span>
+  </span>
+  <ul class="flex flex-col text-center list-none gap-7">
+    <li><a routerLink="/home" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.HOME' | translate }}</a></li>
+    <li><a routerLink="/products" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.PRODUCTS' | translate }}</a></li>
+    <li><a routerLink="/story" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.OUR_STORY' | translate }}</a></li>
+    <li><a routerLink="/quality" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.QUALITY' | translate }}</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+    <li><a routerLink="/radwacv" routerLinkActive="active" (click)="toggleSidebar()">{{'footer.owner' | translate}}</a></li>
+    <li class="mx-auto">
+            <app-lang-change></app-lang-change>
+      </li>
+  </ul>
+</div>
+
+@if (sidebarOpen) {
+  <div class="overlay" (click)="toggleSidebar()"></div>
+}

@@ -1,0 +1,230 @@
+<!-- ================= REVIEWS SECTION ================= -->
+<section class="py-7 reviews">
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <span class="section-tag">{{'home.reviews.tag' | translate}}</span>
+      <h2 class="section-title mt-2">
+        {{'home.reviews.title' | translate}}
+      </h2>
+      <p class=" md:text-base">
+        {{'home.reviews.subtitle' | translate}}
+      </p>
+      
+      <!-- Owl Carousel -->
+      @if (isLoading) {
+        <!-- Reviews Skeleton -->
+        <div class="mt-6">
+          <div class="flex gap-4 overflow-x-auto animate-pulse">
+            <!-- Review skeleton card -->
+            <div class="min-w-[250px] bg-gray-200 p-6 rounded-2xl shadow-md h-60 flex flex-col justify-between">
+              <!-- Text skeleton -->
+              <div class="space-y-2">
+                <div class="h-3 w-full bg-gray-300 rounded"></div>
+                <div class="h-3 w-5/6 bg-gray-300 rounded"></div>
+                <div class="h-3 w-2/3 bg-gray-300 rounded"></div>
+              </div>
+
+              <!-- Stars skeleton -->
+              <div class="flex gap-1 justify-center mt-6">
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+              </div>
+
+              <!-- Author skeleton -->
+              <div class="h-4 w-24 bg-gray-300 rounded mx-auto mt-3"></div>
+            </div>
+
+            <!-- تقدر تكرر الكارت كذا مرة -->
+            <div class="min-w-[250px] bg-gray-200 p-6 rounded-2xl shadow-md h-60 flex flex-col justify-between">
+              <div class="space-y-2">
+                <div class="h-3 w-full bg-gray-300 rounded"></div>
+                <div class="h-3 w-5/6 bg-gray-300 rounded"></div>
+                <div class="h-3 w-2/3 bg-gray-300 rounded"></div>
+              </div>
+              <div class="flex gap-1 justify-center mt-6">
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+                <div class="h-4 w-4 bg-gray-300 rounded"></div>
+              </div>
+              <div class="h-4 w-24 bg-gray-300 rounded mx-auto mt-3"></div>
+            </div>
+          </div>
+        </div>
+      }
+      @else {
+        <div class="mt-6">
+          <owl-carousel-o [options]="customOptions">
+            @for (review of allReviews; track $index) {
+            <ng-container>
+              <ng-template carouselSlide>
+                <div class="review card bg-[#C6F6DB]  rounded-2xl shadow-md h-full flex flex-col">
+                  <p class="leading-relaxed flex-grow h-full">
+                    {{ review.description }}
+                  </p>
+                  <div>
+                  <div class="rating flex gap-1 justify-center rtl:flex-row ltr:flex-row-reverse mt-2">
+                    @for (filled of getStars(review.rating); track $index) {
+                    <ng-container>
+                      @if (filled) {
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                      }
+                      @else {
+                      <i class="fa-regular fa-star text-gray-400"></i>
+                      }
+                    </ng-container>
+                    }
+                  </div>
+
+                  <h4 class="text-base font-semibold mt-3">
+                    {{ review.firstName }} {{review.lastName}}
+                  </h4>
+                   <h4>
+                    {{review.jobTitle}}
+                  </h4>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+            }
+          </owl-carousel-o>
+          <div 
+            (click)="openRatingPopup()"
+            class="block cursor-pointer w-fit mx-auto px-8 md:px-20 py-2 md:py-3 text-base md:text-lg font-medium rounded-lg bg-[#7A4485] text-white mt-4 hover:bg-[#6a3a75] transition-colors">
+            {{'contactForm.addReview' | translate}}
+          </div>        
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Rating Popup -->
+@if (showRatingPopup) {
+<div 
+  class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[9999] p-4"
+  (click)="closeRatingPopup()">
+  
+  <div 
+    class="bg-white rounded-lg max-w-md w-full p-6 relative"
+    (click)="$event.stopPropagation()">
+    
+    <!-- Close Button -->
+    <button 
+      (click)="closeRatingPopup()"
+      class="absolute top-4 left-4 text-gray-500 hover:text-gray-700 z-10">
+      <i class="fa-solid fa-times text-xl"></i>
+    </button>
+    
+    <!-- Popup Content -->
+    <h3 class="text-xl font-bold text-center ">{{'contactForm.reviews.ratingTitle' | translate}}</h3>
+    <p class="text-center mb-1">{{'contactForm.reviews.ratingsubTitle' | translate}}</p>
+    <!-- Rating Form -->
+    <form (ngSubmit)="submitRating()" class=" sm:space-y-2 md:space-y-3 ">
+      <!-- Stars Rating -->
+      <div class="flex justify-center gap-2 mb-2">
+        @for (star of [1,2,3,4,5]; track star) {
+          <button 
+            type="button"
+            (click)="setRating(star)"
+            class="text-2xl focus:outline-none">
+            @if (star <= selectedRating) {
+              <i class="fa-solid fa-star text-yellow-500"></i>
+            } @else {
+              <i class="fa-regular fa-star text-gray-300"></i>
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Name Inputs -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block  font-medium text-gray-700 mb-1" for="firstName">
+            {{'contactForm.reviews.firstName' | translate}}
+          </label>
+          <input 
+            type="text" 
+            [(ngModel)]="ratingForm.firstName"
+            name="firstName"
+            id="firstName"
+            class="w-full px-2 sm:px-3 py-1 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500">
+        </div>
+        <div>
+          <label class="block  font-medium text-gray-700 mb-1" for="lastName">
+            {{'contactForm.reviews.lastName' | translate}}
+          </label>
+          <input 
+            type="text" 
+            [(ngModel)]="ratingForm.lastName"
+            name="lastName"
+            id="lastName"
+            class="w-full px-2 sm:px-3 py-1 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500">
+        </div>
+      </div>
+
+      <!-- email -->
+      <div>
+        <label class="block  font-medium text-gray-700 mb-1" for="email">
+          {{'contactForm.reviews.email' | translate}}
+        </label>
+        <input 
+          type="email" 
+          [(ngModel)]="ratingForm.email"
+          name="email"
+          id="email"
+          class="w-full px-2 sm:px-3 py-1 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500">
+      </div>
+
+      <!-- Job Title -->
+      <div>
+        <label class="block  font-medium text-gray-700 mb-1" for="jobTitle">
+          {{'contactForm.reviews.jobTitle' | translate}}
+        </label>
+        <input 
+          type="text" 
+          [(ngModel)]="ratingForm.jobTitle"
+          name="jobTitle"
+          id="jobTitle"
+          class="w-full px-2 sm:px-3 py-1 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500">
+      </div>
+
+      <!-- Review Text -->
+      <div>
+        <label class="block  font-medium text-gray-700 mb-1" for="desc">
+          {{'contactForm.reviews.reviewText' | translate}}
+        </label>
+        <textarea 
+          [(ngModel)]="ratingForm.description"
+          name="description"
+          rows="4"
+          id="desc"
+          class="w-full px-2 sm:px-3 py-1 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500 resize-none"></textarea>
+      </div>
+
+
+      <!-- messages -->
+      <!-- Submit Button -->
+      <div>
+        @if (errorMsg) {
+          <p class="text-red-500 ">{{'contactForm.message.error' | translate}}</p>
+        }
+        @if (successMsg) {
+          <p class="text-green-500 ">{{'contactForm.message.success' | translate}}</p>
+        }
+      <button 
+        type="submit"
+        class="w-full bg-[#7A4485] text-white py-3 rounded-lg font-medium hover:bg-[#6a3a75] transition-colors">
+        {{'contactForm.reviews.submitReview' | translate}}
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+}

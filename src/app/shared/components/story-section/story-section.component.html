@@ -1,0 +1,41 @@
+<!-- ================= STORY SECTION ================= -->
+<section>
+  <div class="story py-14">
+    <div class="container text-center">
+      <span class="section-tag">{{'home.story.tag' | translate}}</span>
+      <h2 class="section-title mt-3">
+        {{'home.story.title' | translate}}
+      </h2>
+      <p class="max-w-[800px] mx-auto text-base">
+        {{'home.story.description' | translate}}
+      </p>
+
+      <div class="my-5">
+      <!-- Owl Carousel -->
+      
+      <owl-carousel-o [options]="customOptions2">
+        @for (img of images; track $index) {
+        <ng-container>
+          <ng-template carouselSlide>
+            <picture
+              class="h-[300px] md:h-full mx-auto block rounded-3xl overflow-hidden w-full"
+            >
+              <img
+                class="w-full h-full object-cover md:object-contain"
+                [src]="img"
+                alt="story image"
+              />
+            </picture>
+          </ng-template>
+        </ng-container>
+        }
+      </owl-carousel-o>
+
+      </div>
+      <!-- CTA -->
+      <button routerLink="/story" class="main-btn-secondary mt-7">
+        {{'home.story.button' | translate}}
+      </button>
+    </div>
+  </div>
+</section>

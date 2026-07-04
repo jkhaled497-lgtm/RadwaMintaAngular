@@ -1,0 +1,9 @@
+.category{
+ @apply rounded-3xl px-6 py-1 border border-[#CFCFCF] text-black opacity-90 cursor-pointer transition text-sm sm:text-base;
+}
+.category:hover{
+    @apply text-green-700 border-green-700 bg-green-100
+}
+.category.active{
+    @apply text-green-700 border-green-700 bg-green-100
+}

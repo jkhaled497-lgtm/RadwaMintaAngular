@@ -1,0 +1,134 @@
+<section>
+    <header class="h-[85vh] w-full md:h-[750px]">
+        <div class="text-white text-center px-3 sm:max-w-[600px] md:max-w-[700px] lg:max-w-[1000px] space-y-5">
+            <h2 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+            {{ 'story.hero.text1' | translate }}
+            <span class="text-[#99FAC4]">{{ 'story.hero.highlight1' | translate }}</span>
+            {{ 'story.hero.text2' | translate }}
+            <span class="text-[#D1B1D7]">{{ 'story.hero.highlight2' | translate }}</span>
+            </h2>
+
+            <p class="text-base">{{'story.hero.description' | translate}}</p>
+            <button (click)="scroll()" class="main-btn bg-[#7A4485] outline-none">{{'story.hero.button' | translate}}</button>
+        </div>
+    </header>
+    
+    <div class="our-roots py-20 pb-10 md:pt-28 lg:pt-36">
+        <div class="container">
+            <div class="lg:max-w-[80%] mx-auto flex flex-wrap lg:flex-nowrap gap-7 sm:gap-14">
+                <div class="space-y-4">
+                    <h3><img src="/images/Subtract.png" alt="image"> {{'story.roots.tag' | translate}}</h3>
+                    <h4 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">{{'story.roots.title' | translate}}</h4>
+                    <p class="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed">
+                    {{ 'story.hero.hero_legacy.text1' | translate }}
+                    <span class="text-[#098943] font-semibold">{{ 'story.hero.hero_legacy.highlight1' | translate }}</span>
+                    {{ 'story.hero.hero_legacy.text2' | translate }}
+                    <b>{{ 'story.hero.hero_legacy.bold' | translate }}</b>
+                    {{ 'story.hero.hero_legacy.text3' | translate }}
+                    </p>
+
+                </div>
+                <picture class="md:flex-shrink-0 mx-auto">
+                    <img class="w-full" src="/images/Frame 1984082168.png" alt="bg-image">
+                </picture>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="pt-8 pb-3 founder-journey">
+        <div class="container flex flex-wrap sm:flex-nowrap gap-5 md:gap-8 lg:gap-16 justify-between">
+            <picture class="block">
+                <img class="w-full" src="/images/Component 30.png" alt="radwa">
+            </picture>
+            <div class="space-y-5">
+                <h3><img src="/images/Subtract.png" alt="image"> {{'story.founder.tag' | translate}}</h3>
+                <h4 class="font-semibold text-2xl sm:text-3xl md:text-5xl lg:text-8xl text-[#087338]">{{'story.founder.title' | translate}}</h4>
+                <b>{{'story.founder.subtitle' | translate}}</b>
+                <p [innerHTML]="'story.founder.description' | translate"></p>
+                <button routerLink="/radwacv" class="main-btn bg-[#7A4485] text-white">{{'story.founder.button' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="about-us py-5">
+    <div class="container">
+        <div class="lg:max-w-[90%] mx-auto flex flex-wrap lg:flex-nowrap gap-7 sm:gap-14">
+            <picture class="md:flex-shrink-0 mx-auto">
+                <img class="w-full" src="/images/radwa-About-us.png" alt="bg-image">
+            </picture>
+            <div class="space-y-4">
+                <h3><img src="/images/Subtract.png" alt="image"> {{ 'about_us.title' | translate }}</h3>
+                <h4 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">{{ 'about_us.subtitle' | translate }}</h4>
+
+                <p class="text-gray-700">
+                    <b>{{'about_us.radwaminta'| translate}}</b> {{ 'about_us.paragraph_1_rest' | translate }}
+                </p>
+                <p class="text-gray-700">
+                    <b>{{'about_us.radwaminta'| translate}}</b> {{ 'about_us.paragraph_2_part1' | translate }} <b>{{ 'about_us.highest_standards' | translate }}</b> {{ 'about_us.paragraph_2_part2' | translate }}
+                </p>
+                <p class="text-gray-700">
+                    {{ 'about_us.paragraph_3_part1' | translate }} <b>{{ 'about_us.special_product' | translate }}</b> {{ 'about_us.paragraph_3_part2' | translate }}
+                </p>
+                <p class="text-gray-700">
+                    {{ 'about_us.paragraph_4_part1' | translate }} <b>{{ 'about_us.gained_confidence' | translate }}</b> {{ 'about_us.paragraph_4_part2' | translate }} <b>{{ 'about_us.clients' | translate }}</b> {{ 'about_us.paragraph_4_part3' | translate }} <b>{{ 'about_us.foreign' | translate }}</b> {{ 'about_us.paragraph_4_part4' | translate }}
+                </p>
+                <p class="text-gray-700">
+                    {{ 'about_us.paragraph_5_part1' | translate }} <b>{{ 'about_us.competitive_price' | translate }}</b> {{ 'about_us.paragraph_5_part2' | translate }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="py-7">
+  <div class="container">
+    <div class="flex sm:gap-10 flex-col lg:flex-row">
+      <div>
+        <h3>
+          <img src="/images/Subtract.png" alt="image" />
+          {{ 'story.farms.tag' | translate }}
+        </h3>
+        <h4 class="font-semibold text-base sm:text-lg md:text-xl lg:text-2xl">
+          {{ 'story.farms.title' | translate }}
+        </h4>
+
+        <div class="space-y-3">
+          <p>{{ 'story.farms.paragraph_1' | translate }}</p>
+          <p>{{ 'story.farms.paragraph_2' | translate }}</p>
+          <p>{{ 'story.farms.paragraph_3' | translate }}</p>
+
+          <p>
+            <b>{{ 'story.farms.pre_harvest_title' | translate }}</b><br />
+            {{ 'story.farms.pre_harvest_text' | translate }}
+          </p>
+
+          <p>
+            <b>{{ 'story.farms.post_harvest_title' | translate }}</b><br />
+            {{ 'story.farms.post_harvest_text' | translate }}
+          </p>
+
+          <p>
+            <b>{{ 'story.farms.drying_process_title' | translate }}</b><br />
+            {{ 'story.farms.drying_process_text' | translate }}
+          </p>
+
+          <p>{{ 'story.farms.paragraph_4' | translate }}</p>
+
+          <p>
+            <b>{{ 'story.farms.qcap_title' | translate }}</b>:
+            <a href="https://www.qcap-egypt.com">www.qcap-egypt.com</a>
+            {{ 'story.farms.qcap_text' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="slider-image  mt-4 w-full h-[300px] sm:h-[500px] bg-contain lg:bg-cover lg:w-[500px] flex-shrink-0"
+      ></div>
+    </div>
+  </div>
+</div>
+
+</section>

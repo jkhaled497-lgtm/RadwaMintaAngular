@@ -1,0 +1,220 @@
+<section class="py-7">
+  <div class="container">
+    <!-- ===== HEADER ===== -->
+    <div class="text-center">
+      <span class="font-medium block mx-auto text-base">
+        {{ 'radwacv.header.hello' | translate }}
+      </span>
+
+      <h2 class="r font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+        {{ 'radwacv.header.im' | translate }}
+        <span class="text-gradient">{{ 'radwacv.header.name' | translate }}</span>
+      </h2>
+
+      <h3
+        class="text-[#098943] text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black uppercase z-0 opacity-70 relative"
+      >
+        {{ 'radwacv.header.title' | translate }}
+      </h3>
+
+      <picture
+        class="max-w-[350px] md:max-w-[450px] lg:max-w-[550px] block mx-auto md:-mt-10 z-30 relative"
+      >
+        <img
+          class="w-full"
+          src="/images/radwacv-image.png"
+          alt="{{ 'radwacv.header.imageAlt' | translate }}"
+        />
+      </picture>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <div class="tabs border-b my-7 flex flex-nowrap overflow-x-auto">
+      <a
+        (click)="tabName='autobiography'"
+        [class.active-tab]="tabName =='autobiography'"
+        class="whitespace-nowrap tab text-base py-4 px-4"
+      >
+        {{ 'radwacv.tabs.autobiography' | translate }}
+      </a>
+
+      <a
+        (click)="tabName='experience'"
+        [class.active-tab]="tabName == 'experience'"
+        class="whitespace-nowrap tab text-base py-4 px-4"
+      >
+        {{ 'radwacv.tabs.experience' | translate }}
+      </a>
+
+      <a
+        (click)="tabName='education'"
+        [class.active-tab]="tabName == 'education'"
+        class="whitespace-nowrap tab text-base py-4 px-4"
+      >
+        {{ 'radwacv.tabs.education' | translate }}
+      </a>
+
+      <a
+        (click)="tabName='community'"
+        [class.active-tab]="tabName == 'community'"
+        class="whitespace-nowrap tab text-base py-4 px-4"
+      >
+        {{ 'radwacv.tabs.community' | translate }}
+      </a>
+
+      <a
+        (click)="tabName='initiatives'"
+        [class.active-tab]="tabName == 'initiatives'"
+        class="whitespace-nowrap tab text-base py-4 px-4"
+      >
+        {{ 'radwacv.tabs.initiatives' | translate }}
+      </a>
+    </div>
+
+    <!-- ===== DYNAMIC TAB CONTENT (with @switch + @defer + animation) ===== -->
+    @switch (tabName) {
+      @case ('autobiography') {
+        @defer (when tabName === 'autobiography') {
+          <div class="fade-in">
+            <app-autobiography-section></app-autobiography-section>
+          </div>
+        } @placeholder {
+          <div class="text-center py-10 text-gray-500">
+            Loading autobiography...
+          </div>
+        }
+      }
+
+      @case ('experience') {
+        @defer (when tabName === 'experience') {
+          <div class="fade-in">
+            <app-experience-section></app-experience-section>
+          </div>
+        } @placeholder {
+          <div class="text-center py-10 text-gray-500">
+            Loading experience...
+          </div>
+        }
+      }
+
+      @case ('education') {
+        @defer (when tabName === 'education') {
+          <div class="fade-in">
+            <app-education-section></app-education-section>
+          </div>
+        } @placeholder {
+          <div class="text-center py-10 text-gray-500">
+            Loading education...
+          </div>
+        }
+      }
+
+      @case ('community') {
+        @defer (when tabName === 'community') {
+          <div class="fade-in">
+            <app-community-section></app-community-section>
+          </div>
+        } @placeholder {
+          <div class="text-center py-10 text-gray-500">
+            Loading community...
+          </div>
+        }
+      }
+
+      @case ('initiatives') {
+        @defer (when tabName === 'initiatives') {
+          <div class="fade-in">
+            <app-initiatives-section></app-initiatives-section>
+          </div>
+        } @placeholder {
+          <div class="text-center py-10 text-gray-500">
+            Loading initiatives...
+          </div>
+        }
+      }
+    }
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <section class="py-7">
+    <div class="container">
+        <div class="text-center">
+            <span class="font-medium block mx-auto text-base">
+                {{ 'radwacv.header.hello' | translate }}
+            </span>
+
+            <h2 class="r font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+                {{ 'radwacv.header.im' | translate }}
+                <span class="text-gradient">{{ 'radwacv.header.name' | translate }}</span>
+            </h2>
+
+            <h3 class="text-[#098943] text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black uppercase z-0 opacity-70 relative">
+                {{ 'radwacv.header.title' | translate }}
+            </h3>
+
+            <picture class="max-w-[350px] md:max-w-[450px] lg:max-w-[550px] block mx-auto md:-mt-10 lg:-mt-20 z-30 relative">
+                <img class="w-full" src="/images/radwacv-image.png" alt="{{ 'radwacv.header.imageAlt' | translate }}">
+            </picture>
+        </div>
+
+        <div class="tabs border-b my-7 flex flex-nowrap overflow-x-auto">
+            <a (click)="tabName='autobiography' "
+               [class.active-tab]="tabName =='autobiography'"
+               class="whitespace-nowrap tab text-base py-4 px-4">
+                {{ 'radwacv.tabs.autobiography' | translate }}
+            </a>
+
+            <a (click)="tabName='experience'"
+               [class.active-tab]="tabName == 'experience'"
+               class="whitespace-nowrap tab text-base py-4 px-4">
+                {{ 'radwacv.tabs.experience' | translate }}
+            </a>
+
+            <a (click)="tabName='education'"
+               [class.active-tab]="tabName == 'education'"
+               class="whitespace-nowrap tab text-base py-4 px-4">
+                {{ 'radwacv.tabs.education' | translate }}
+            </a>
+
+            <a (click)="tabName='community'"
+               [class.active-tab]="tabName == 'community'"
+               class="whitespace-nowrap tab text-base py-4 px-4">
+                {{ 'radwacv.tabs.community' | translate }}
+            </a>
+
+            <a (click)="tabName='initiatives'"
+               [class.active-tab]="tabName == 'initiatives' "
+               class="whitespace-nowrap tab text-base py-4 px-4">
+                {{ 'radwacv.tabs.initiatives' | translate }}
+            </a>
+        </div>
+
+        @if (tabName == 'education') {
+            <app-education-section></app-education-section>
+        }
+        @else if (tabName =='autobiography') {
+            <app-autobiography-section></app-autobiography-section>
+        }
+        @else if (tabName == 'experience') {
+            <app-experience-section></app-experience-section>
+        }
+        @else if (tabName == 'community') {
+            <app-community-section></app-community-section>
+        }
+        @else if (tabName == 'initiatives'){
+            <app-initiatives-section></app-initiatives-section>
+        }
+    </div>
+</section> -->

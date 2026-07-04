@@ -1,0 +1,47 @@
+<!-- contactForm Form -->
+<form class="flex flex-col gap-4" [formGroup]="form">
+  <div class="w-full">
+      <input type="text" placeholder="{{ 'contactForm.name' | translate }}" formControlName="Name" />
+      @if (form.get('Name')?.invalid && form.get('Name')?.touched) {
+        <p class="text-red-600 ms-1">{{ 'contactForm.errors.name_required' | translate }}</p>
+      }
+  </div>
+  
+  <div>
+    <input placeholder="{{ 'contactForm.phoneNumber' | translate }}"  formControlName="PhoneNumber" />
+    @if (form.get('PhoneNumber')?.getError('required') && form.get('PhoneNumber')?.touched) {
+      <p class="text-red-600 ms-1">{{ 'contactForm.errors.phoneNumber_required' | translate }}</p>
+    }
+  </div>
+
+
+  <div>
+    <input type="email" placeholder="{{ 'contactForm.email' | translate }}" formControlName="email" />
+    @if (form.get('email')?.getError('required') && form.get('email')?.touched) {
+      <p class="text-red-600 ms-1">{{ 'contactForm.errors.email_required' | translate }}</p>
+    }
+    @else if (form.get('email')?.getError('email') && form.get('email')?.touched) {
+      <p class="text-red-600 ms-1">{{ 'contactForm.errors.email_invalid' | translate }}</p>
+    }
+  </div>
+
+  <div>
+    <textarea
+      name="desc"
+      id="desc"
+      placeholder="{{ 'contactForm.description' | translate }}"
+      class="resize-none h-[150px] sm:h-[200px]"
+      formControlName="desc"
+    ></textarea>
+    @if (form.get('desc')?.getError('required') && form.get('desc')?.touched) {
+      <p class="text-red-600 ms-1">{{ 'contactForm.errors.description_required' | translate }}</p>
+    }
+  </div>
+
+  <div>
+    <button class="main-btn-purple w-full" type="submit" (click)="submitForm()">
+      {{ 'contactForm.submit' | translate }}
+    </button>
+    <p class="text-green-600">{{ message }}</p>
+  </div>
+</form>

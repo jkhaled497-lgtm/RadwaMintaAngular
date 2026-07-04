@@ -1,0 +1,263 @@
+<!-- ================= HERO SECTION ================= -->
+<section>
+  <div class="container">
+    <div
+      class="sm:py-6 gap-y-4 flex flex-wrap-reverse lg:flex-nowrap justify-between items-center"
+    >
+      <!-- Left Content -->
+      <div class="content space-y-4 text-center lg:text-start">
+       <h2 class="font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+        {{ 'home.hero.text1' | translate }}
+        <span class="text-green-700">{{ 'home.hero.highlight1' | translate }}</span>
+        {{ 'home.hero.text2' | translate }}
+        <span class="text-green-700">{{ 'home.hero.highlight2' | translate }}</span>
+      </h2>
+
+        
+        <p class="text-base">
+          {{'home.hero.description' | translate}}
+        </p>
+        @if (isLoading) {
+          <div class="w-52 h-14 bg-gray-300 rounded-lg animate-pulse mx-auto lg:mx-0"></div>
+        }
+        @else {
+          <a [href]="whatsAppLink" class="main-btn-primary block w-fit mx-auto lg:mx-0">
+            <i class="fa-brands fa-whatsapp me-2"></i> {{'home.hero.orderButton' | translate}}
+          </a>
+        }
+        <!-- Counters -->
+         <div class="mx-auto lg:mx-0 w-fit">
+           <app-hero-counter></app-hero-counter>
+
+         </div>
+      </div>
+
+      <!-- Right Image -->
+      <picture class="block relative w-[75%] md:w-auto mx-auto lg:mx-0 md:flex-shrink-0">
+        <div class="absolute flex flex-col justify-center w-16 h-16 sm:w-24 sm:h-24 rounded-full items-center bg-[#E2FDEE] shadow-lg top-[20%] end-[3%] sm:end-[10%]">
+          <span class="block text-center font-semibold text-sm sm:text-base">10K+</span>
+          <span class="text-sm sm:text-base"> {{'home.counter.numberVisitors' | translate}} </span>
+        </div>
+        <img class="w-full" src="/images/Group 1.png" alt="hero image" />
+      </picture>
+    </div>
+    
+  </div>
+</section>
+
+
+<div class="py-7">
+        <div class="container flex flex-col gap-6 sm:gap-8 md:gap-10 items-stretch">
+            <div class="flex-1">
+                <h3><img src="/images/Subtract.png" alt="image">{{'story.vision.tag' | translate}}</h3>
+                <div class="our-mission py-6 md:py-10 px-5 md:px-9 text-base md:text-lg lg:text-xl" [innerHTML]="'story.vision.description' | translate"></div>
+            </div>
+            <div class="flex-1 flex flex-col">
+                <h3><img src="/images/Subtract.png" alt="image">{{'story.message.tag' | translate}}</h3>
+                <div class="our-message flex-1 py-6 md:py-10 px-5 md:px-9 text-base md:text-lg lg:text-xl" [innerHTML]="'story.message.description' | translate"></div>
+            </div>
+        </div>
+    </div>
+<!-- ================= STORY SECTION ================= -->
+@defer(on viewport){
+  <app-story-section></app-story-section>
+}
+@placeholder {
+  <p></p>
+}
+
+<!-- ================= PRODUCTS SECTION ================= -->
+@defer(on viewport){
+<app-featured-products></app-featured-products>
+}
+@placeholder {
+  <p></p>
+}
+
+<!-- ================= REVIEWS SECTION ================= -->
+@defer(on viewport){
+<app-reviews-section></app-reviews-section>
+}
+@placeholder {
+  <p></p>
+}
+<!-- ================= FAQ SECTION ================= -->
+<section class="py-10 faqs">
+  <div class="container">
+    <!-- Title -->
+    <div class="text-center">
+      <span class="section-tag">{{'home.faq.Questions' | translate}}</span>
+      <h2 class="section-title mt-2">
+        {{'home.faq.title' | translate}}
+      </h2>
+      <p class="text-base">
+        {{'home.faq.subtitle' | translate}}
+      </p>
+    </div>
+
+    <!-- FAQ Rows -->
+    <div class="rows mt-12">
+      <!-- FAQ 1 -->
+      <div
+        [class.activef]="faqs[0].open"
+        class="row p-4 sm:p-7 border-b py-4 cursor-pointer"
+        (click)="toggleFaq(0)"
+      >
+        <div class="flex justify-between items-center">
+          <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#7A4485]">
+            01
+          </h4>
+          <p class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl flex-1 ms-4">
+            {{'home.faq.questions.q1' | translate}}
+          </p>
+          <span class="text-2xl lg:text-3xl">
+            {{ faqs[0].open ? "−" : "+" }}
+          </span>
+        </div>
+
+        @if (faqs[0].open) {
+          <div class="mt-3 text-gray-600 text-base">
+            {{'home.faq.questions.a1' | translate}}
+          </div>
+        }
+      </div>
+
+      <!-- FAQ 2 -->
+      <div
+        [class.activef]="faqs[1].open"
+        class="row p-4 sm:p-7 border-b py-4 cursor-pointer"
+        (click)="toggleFaq(1)"
+      >
+        <div class="flex justify-between items-center">
+          <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#7A4485]">
+            02
+          </h4>
+          <p class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl flex-1 ms-4">
+            {{'home.faq.questions.q2' | translate}}
+          </p>
+          <span class="text-2xl lg:text-3xl">
+            {{ faqs[1].open ? "−" : "+" }}
+          </span>
+        </div>
+
+        @if (faqs[1].open) {
+          <div class="mt-3 text-gray-600 text-base">
+            {{'home.faq.questions.a2' | translate}}
+          </div>
+        }
+      </div>
+
+      <!-- FAQ 3 -->
+      <div
+        [class.activef]="faqs[2].open"
+        class="row p-4 sm:p-7 border-b py-4 cursor-pointer"
+        (click)="toggleFaq(2)"
+      >
+        <div class="flex justify-between items-center">
+          <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#7A4485]">
+            03
+          </h4>
+          <p class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl flex-1 ms-4">
+            {{'home.faq.questions.q3' | translate}}
+          </p>
+          <span class="text-2xl lg:text-3xl">
+            {{ faqs[2].open ? "−" : "+" }}
+          </span>
+        </div>
+
+        @if (faqs[2].open) {
+          <div class="mt-3 text-gray-600 text-base">
+            {{'home.faq.questions.a3' | translate}}
+          </div>
+        }
+      </div>
+
+      <!-- FAQ 4 -->
+      <div
+        [class.activef]="faqs[3].open"
+        class="row p-4 sm:p-7 border-b py-4 cursor-pointer"
+        (click)="toggleFaq(3)"
+      >
+        <div class="flex justify-between items-center">
+          <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#7A4485]">
+            04
+          </h4>
+          <p class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl flex-1 ms-4">
+            {{'home.faq.questions.q4' | translate}}
+          </p>
+          <span class="text-2xl lg:text-3xl">
+            {{ faqs[3].open ? "−" : "+" }}
+          </span>
+        </div>
+
+        @if (faqs[3].open) {
+          <div class="mt-3 text-gray-600 text-base">
+            {{'home.faq.questions.a4' | translate}}
+          </div>
+        }
+      </div>
+
+      <!-- FAQ 5 -->
+      <div
+        [class.activef]="faqs[4].open"
+        class="row p-4 sm:p-7 border-b py-4 cursor-pointer"
+        (click)="toggleFaq(4)"
+      >
+        <div class="flex justify-between items-center">
+          <h4 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#7A4485]">
+            05
+          </h4>
+          <p class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl flex-1 ms-4">
+            {{'home.faq.questions.q5' | translate}}
+          </p>
+          <span class="text-2xl lg:text-3xl">
+            {{ faqs[4].open ? "−" : "+" }}
+          </span>
+        </div>
+
+        @if (faqs[4].open) {
+          <div class="mt-3 text-gray-600 text-base">
+            {{'home.faq.questions.a5' | translate}}
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="py-14 md:py-20 contact">
+  <div
+    class="container flex items-center flex-col md:flex-row justify-between gap-y-6 gap-x-10"
+  >
+    <!-- Contact Info -->
+    <div class="max-w-[400px]">
+      <span class="gradient-border font-medium w-fit text-start">{{'home.contact.ContactUs' | translate}}</span>
+      <h2 class="section-title mt-10">
+        {{'home.contact.title' | translate}}
+      </h2>
+      <p class="text-gray-600 text-base my-5">
+        {{'home.contact.description' | translate}}
+      </p>
+      <div class="flex flex-wrap gap-2 sm:gap-5">
+        <a href="mailto:radwa@radwaminta.com">
+        <span class="font-semibold">
+          <i class="fa-solid fa-envelope text-[#7A4485] me-2"></i>
+          {{'home.contact.email' | translate}}
+        </span>
+        </a>
+        <a href="tel:+201095110025">
+        <span class="font-semibold">
+          <i class="fa-solid fa-phone text-[#7A4485] me-2"></i>
+          {{'home.contact.phone' | translate}}
+        </span>
+        </a>
+      </div>
+    </div>
+    <!-- Contact Form -->
+     <div class="w-full sm:w-[400px]">
+       <app-contact-form></app-contact-form>
+
+     </div>
+  </div>
+</section>

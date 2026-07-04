@@ -1,0 +1,41 @@
+
+.contact {
+  background-image: url('/images/Rectangle 10.png');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.faqs .row {
+  transition: all 0.6s;
+}
+
+.activef {
+  background-color: #E5D4E8;
+}
+
+
+
+h3{
+    @apply border-b border-b-[#098943] w-fit relative flex gap-1 mb-4;
+}
+
+
+
+.our-mission{
+    background-color: #e8fff1; 
+    border-left: 3px solid #00984a;
+    border-bottom: 3px solid #00984a;
+    border-radius: 0 38px 0 38px;
+    color: #1a1a1a;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.15);
+}
+
+.our-message{
+    background-color: #EDE1EF;
+    border-left: 3px solid #7A4485;
+    border-bottom: 3px solid #7A4485;
+    border-radius: 38px 0 38px;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.15);
+}

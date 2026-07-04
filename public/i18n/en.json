@@ -1,0 +1,548 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "OUR_STORY": "Our story",
+    "QUALITY": "Quality",
+    "CONTACT_US": "Contact Us",
+    "MENU": "Menu",
+    "CLOSE": "Close"
+  },
+  "home": {
+    "hero": {
+      "text1": "Authentic",
+      "highlight1": "Flavors",
+      "text2": "from the Land of the",
+      "highlight2": "Pharaohs",
+      "description": "RadwaMinta has been producing, processing, and exporting high-quality herbs, spices and seeds since 2006. With global branches and partnerships, we deliver authentic products and ensure excellence in every step, making us your trusted resource worldwide.",
+      "orderButton": "Order via WhatsApp"
+    },
+    "faq": {
+      "Questions": "Questions",
+      "title": "Frequently Asked Questions (FAQ)",
+      "subtitle": "We've gathered all your common questions here, so you don't have to search",
+      "questions": {
+        "q1": "What is the source of your herbs?",
+        "a1": "All our herbs and botanicals are locally grown on our farms in Fayoum, Egypt. ",
+        "q2": "Are your herbs dried industrially or naturally?",
+        "a2": "We rely on natural sun-drying methods at our facilities. This preserves the natural color and the full nutritional and therapeutic value of the herbs, unlike industrial drying which can diminish their properties.",
+        "q3": "Are your products available outside of the growing season?",
+        "a3": "Yes. Our herbs are guaranteed to be available year-round (Whole Year Availability). We achieve this through careful inventory management and professional storage practices, ensuring consistent supply even beyond the harvest season.",
+        "q4": "Are your products packaged in an eco-friendly way?",
+        "a4": "Yes, we prioritize sustainability. We rely on 3-ply paper bags and carton boxes as outer packaging for most products. All our packaging materials are untreated, eco-friendly, and ensure that our herbs remain safe, natural, and well-preserved. For ground and cut herbs, we use the same sustainable paper-based packaging to maintain product quality while protecting the environment.",
+        "q5": "What is the best time to purchase our products?",
+        "a5": "The ideal time to source our products is during the harvest season, ensuring maximum freshness, quality, and cost efficiency."
+      }
+    },
+    "contact": {
+      "ContactUs": "Contact Us",
+      "title": "Specifications to Meet Your Needs",
+      "description": "Need a quote or technical support? Fill out the form below, and our dedicated team will respond within hours.",
+      "email": "radwa@radwaminta.com",
+      "phone": "+201095110025",
+      "help": "We are here to help"
+    },
+    "counter": {
+      "yearsExperience": "Years Experience",
+      "customersGlobally": "Customers Globally",
+      "branchesWorldwide": "Branches Worldwide",
+      "numberVisitors":"Visitors"
+    },
+     "story": {
+      "tag": "Our Story",
+      "title": "RadwaMinta: The Passion for Egyptian Quality",
+      "description": "We are more than a company; we are a movement to reconnect the world with the treasures of Egyptian nature...",
+      "button": "Discover Our Full Story"
+    },
+    "products": {
+      "tag": "Products",
+      "title": "Featured Products",
+      "button": "Explore all products"
+    },
+    "reviews": {
+      "tag": "Reviews",
+      "title": "What our customers say about Us",
+      "subtitle": "Real Results. Authentic Reviews. Discover the Difference Nature Makes"
+    }
+  },
+  "footer": {
+    "description": "Processing and exporting medical and aromatic plants",
+    "subdescription": "Natural products for a sustainable healthy life",
+    "pages": "Pages",
+    "home": "Home",
+    "products": "Products",
+    "story": "Our Story",
+    "quality": "Quality",
+    "contact": "Contact Us",
+    "cv": "Radwa Cv",
+    "owner":"Owner Story",
+    "contactTitle": "Contact",
+    "address": "Al-Hadqa, in front of al'awram Center, Al-Safwa Tower(1) third floor El-Fayoum, Egypt.",
+    "followUs": "Follow us"
+  },
+  "products": {
+    "title": "Products",
+    "filterBy": "Filter by",
+    "all": "All",
+    "realtedProducts": "Related Products"
+  },
+  "productCard": {
+    "forms": "Forms",
+    "harvest": "Harvest",
+    "orderNow": "Order Now"
+  },
+  "productDetails": {
+    "products": "Products",
+    "forms": "Forms",
+    "activeIngredients": "Active ingredients",
+    "harvestSeason": "Harvest season",
+    "availability": "Availability",
+    "naturalWonders": "Natural wonders",
+    "containerCapacity": "Capacity of Container 40ft",
+    "orderNow": "Order Now",
+    "quality": {
+      "heavyMetalTested": "Heavy metal tested",
+      "ethicalSourcing": "Ethical sourcing",
+      "nonGmo": "Non GMO",
+      "irradiationFree": "Irradiation free"
+    }
+  },
+  "story": {
+    "hero": {
+      "text1": "Rooted in Egypt's",
+      "highlight1": "Ancient Legacy",
+      "text2": ",",
+      "highlight2": "Growing for the Future",
+      "subtitle1": "The raw material passes through several steps",
+      "subtitle2": "reaching the final products.",
+      "description": "From Queen Hatshepsut's incense trees to modern herbal science, our story bridges history and today.",
+      "button": "Discover our journey",
+      "hero_legacy": {
+      "text1": "The legacy began with",
+      "highlight1": "Queen Hatshepsut",
+      "text2": "(1479–1458 BC), who established Egypt's aromatic trade with incense and myrrh.",
+      "bold": "We proudly continue that heritage",
+      "text3": "today, cultivating the same ancient treasures—basil, chamomile, mint, and black seed—to enrich lives globally."
+    }
+    },
+    "roots": {
+      "tag": "Our roots",
+      "title": "A Legacy That Blossomed Thousands of Years Ago"
+    },
+    "founder": {
+      "tag": "The Founder's Journey",
+      "title": "The Heir of Hatshepsut",
+      "subtitle": "Dr. Radwa was born with the spirit of ancient Egypt's gardens.",
+      "description": "She combines modern science with sustainable farming to bring Egypt's fields back to life. <br> She is the powerful vision crafting pure products—the modern echo of Hatshepsut's story.",
+      "button": "Know more about Dr. Radwa"
+    },
+    "vision": {
+      "tag": "Our vision",
+      "description": "Egyptian excellence that will make the world healthier."
+    },
+    "message": {
+      "tag": "Our message",
+      "description": "We encourage the entire world to revert to sustainable natural products by providing the best high-quality products at competitive prices, always working in a safe and clean environment to win the trust of all customers."
+    },
+    "farms": {
+       "tag": "Our Farms",
+      "title": "From Egypt to the World",
+
+      "paragraph_1": "RadwaMinta has vast areas of farms where we pay great attention to the quality of cultivation, watering, and harvesting. Our farms are constantly updated to comply with the latest local and international standards. We are regularly inspected to ensure the highest purity standards. We carry out regular analysis tests on our farm products to ensure minimal bacterial count without any pathogenic microbes. In addition, the company follows hygiene, sanitation procedures, and a quality assurance system.",
+
+      "paragraph_2": "Our farms are distinguished by their vast areas, being far from polluted regions to provide the ideal atmosphere for our plants.",
+      "paragraph_3": "Our farms are also famous for their rich, productive, and pure soil capable of producing the finest herbs.",
+
+      "pre_harvest_title": "A- Pre-harvest:",
+      "pre_harvest_text": "This stage includes the growing process, which is carried out without chemicals, irradiation, or ozone treatment. Crops are grown, harvested, and processed without pesticides, chemical fertilizers, or herbicides. Instead, natural materials are used to provide plants with essential nutrients. This stage also includes the daily monitoring of plants.",
+
+      "post_harvest_title": "B- Post-harvest:",
+      "post_harvest_text": "This stage includes the drying process, packing, and enveloping.",
+
+      "drying_process_title": "C- Drying Process:",
+      "drying_process_text": "It is carried out in a roofed area under indirect sunlight. Each product has its own code along with the farm code. Then, a sample is sent to the central lab for microbiological testing.",
+
+      "paragraph_4": "Another sample is sent to the Agricultural Research Center to analyze the product for the percentage of essential oils it contains.",
+
+      "qcap_title": "QCAP",
+      "qcap_text": "Central Laboratory for Residue Analysis of Pesticides and Heavy Metals in Food."
+    }
+  },
+  "quality": {
+    "title": "Quality",
+    "subtitle": "When it comes to wellness, every detail matters.",
+    "our_sampling_procedure": "Our Sampling Procedure      >",
+    "our_processing_stages": "Our Processing Stages       >",
+    "our_packing_labeling": "Our Packing and Labeling    >",
+    "our_certificates": "Our Certificates            >",
+
+    "first_paragraph": "At RadwaMinta, there is no such thing as an “off-season” item. We know how to store every product under the best and most suitable conditions to maintain its quality. However, we always prefer to provide each product during its natural season to ensure maximum freshness and authenticity.",
+    "second_paragraph": "Our quality and safety measures strictly comply with international standards. We implement precise, up-to-date, and cutting-edge practices to guarantee the highest level of protection for our customers’ health.",
+    "third_paragraph": "Beyond that, our Quality Control Department is continuously seeking new ideas and innovative approaches to enhance and safeguard product quality. Our ultimate goal is to protect not only our customers, but also the environment, the soil, the water, and the community around us.",
+    "first_stage": "#1 First stage",
+    "sampling_standard_procedure": "Sampling Standard Procedure",
+    "quality_control_description": "Quality Control Sample Distribution and Testing",
+
+    "test1": "Test1",
+    "raw_material_sample": "The raw material sample",
+    "raw_material_sample_p1": "From every batch of raw materials, samples are collected from different depths of each sack and then combined into one composite. This composite is divided into ten sub-samples, each labeled with the necessary details such as farm name, crop, plot location, date, and protocol.",
+    "raw_material_sample_p2": "The sub-samples are tested for visual quality, pesticide residues, microbial and aflatoxin levels, essential oils, and moisture content. To ensure traceability, extra reference samples are securely stored for at least two years, in line with the product’s shelf life.",
+    "raw_material_sample_p3": "All results are carefully recorded and archived in the company’s quality system to guarantee safety, consistency, and transparency.",
+
+    "test2": "Test2",
+    "final_product_sample": "The final product sample",
+    "final_product_sample_p1": "Final product sampling follows the same rigorous protocols established for raw materials. Each batch is carefully inspected and tested to confirm consistency, purity, and compliance with the defined standards.",
+    "final_product_sample_p2": "In addition, an advanced metal detection analysis is performed as an extra safety measure, eliminating any possible risk of contamination. All results are recorded, documented, and archived within the company’s quality system to guarantee traceability and full accountability.",
+
+    "last_stage": "#3 Last stage",
+    "packing_labeling": "Packing and Labeling",
+    "packing_description": "Standardized Packaging Material Specifications and Labeling Procedures for Traceability and Compliance",
+
+    "packing_p1": "the products are packed in three-layer paper bags, with the outer seal secured mechanically.",
+    "packing_b1": "For seeds and crushed leaves,",
+    "packing_p2": "the same three-layer paper bags are used with a mechanical outer seal, in addition to an inner plastic liner sealed with a releasable cable tie to ensure maximum protection.",
+    "packing_b2": "For powder and TBC,",
+    "packing_p3": "the products are packed in carton boxes to preserve their integrity and quality.",
+    "packing_b3": "For flowers and whole leaves,",
+    "packing_p4": "All packages are clearly labeled with our company label and sealed according to international standards. Packing materials are completely untreated, and every product carries the statement “100% Clean.” Each label includes essential details such as weight, batch/lot number, production date, origin, and expiry date to guarantee traceability and compliance.",
+    "standard_packaging_formats": "Standard Packaging Formats",
+
+    "table": {
+      "type": "Type",
+      "weight": "Weight",
+      "specification": "Product specification",
+      "row1_type": "Box",
+      "row1_weight": "5 kg",
+      "row1_spec": "Whole leave",
+      "row2_type": "Box",
+      "row2_weight": "10",
+      "row2_spec": "Flower",
+      "row3_type": "Bag",
+      "row3_weight": "25",
+      "row3_spec": "Petals",
+      "row4_type": "Bag",
+      "row4_weight": "25",
+      "row4_spec": "T. b .c",
+      "row5_type": "Bag",
+      "row5_weight": "25",
+      "row5_spec": "Seed",
+      "row6_type": "Bag",
+      "row6_weight": "12 : 20",
+      "row6_spec": "Crushed",
+      "row7_type": "Bag",
+      "row7_weight": "10",
+      "row7_spec": "Large cut",
+      "row8_type": "Bag",
+      "row8_weight": "25",
+      "row8_spec": "Fin cut",
+      "row9_type": "Bag",
+      "row9_weight": "25",
+      "row9_spec": "Sifting"
+    }
+  },
+  "processingStages": {
+    "stage_tag": "#2 Second stage",
+    "title": "Processing Stages",
+    "subtitle": "The raw material passes through several steps reaching the final products."
+  },
+  "contactForm": {
+    
+    "name": "Full Name",
+    "email": "Email Address",
+    "description": "Enter a description...",
+    "phoneNumber":"Phone Number",
+    "submit": "Submit",
+    "errors": {
+      "name_required": "Full Name is required",
+      "email_required": "Email is required",
+      "phoneNumber_required":"Phone Number is required",
+      "email_invalid": "Please enter a valid email",
+      "description_required": "Description is required"
+    },
+    "addReview":"Add your review",
+    "reviews": {
+      "addReview": "Add Your Review",
+      "ratingTitle": "Your Review Matters",
+      "ratingsubTitle": "We’d love to hear from you — just a few words make a difference.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "jobTitle": "Job Title",
+      "email":"Email Address",
+      "reviewText": "Review Text",
+      "submitReview": "Submit Review"
+    },
+    "message":{
+      "error":"Please fill in all entries correctly!",
+      "success":"Review sent Successfully!"
+    }
+
+  },
+  "radwa-education": {
+    "timeline": [
+      {
+        "date": "2023 Doctorate Degree",
+        "degree": "DBA (Doctorate in Business Administration)",
+        "faculty": "Faculty of Commerce - Beni Suef University",
+        "details":[
+          "Thesis Title: The Role of Product Packaging in the Effectiveness of the Differentiation",
+          "Strategy: An Applied Study on Medicinal and Aromatic Plant Products in Egypt"
+        ]   
+      },
+      {
+        "date": "2019 — 2021  Master’s Degree",
+        "degree": "MBA in Business Administration",
+        "faculty": "Faculty of Commerce – Beni Suef University",
+        "details": ["Thesis Title: The impact of e-marketing on enhancing competitive advantage, the companies exporting medic and aromatic plants in Egypt."]
+      },
+      {
+        "date": "2011–2020 — Professional Certifications",
+        "intro": "Continuous professional growth through international training programs:",
+        "certifications": [
+          "Trainer in Entrepreneurship – The American University in Cairo (AUC)",
+          "International Export Specialist – WTO Institute (wtoi.org)",
+          "Quality Management Qualification for Medicinal and Aromatic Plants – Shell Corporation",
+          "International Export Logistics and Shipping – Fayoum University ",
+          "Export Logistics & Trade – FTTC (fttceg.org)",
+          "Global Quality Systems Training – ISO 22000, HACCP, ISO 9001, Organic (EEC & NOP)",
+          "Accredited Consultant in Good Agricultural Practices (GAP) and Post-Harvest Handling – Certified by GIZ (German Agency for International Cooperation) and the Medicinal and Aromatic Plants Institute, Beni Suef University"
+        ]
+      },
+      {
+        "date": "2008–2011 — Higher Education",
+        "faculty": "Beni Suef University – Faculty of Arts (Translation Department)",
+        "points": [
+          "Earned a Bachelor’s Degree in English Translation (2011)",
+          "Developed translation and intercultural communication expertise"
+        ]
+      },
+      {
+        "date": "2000–2003 — Academic Foundation",
+        "faculty": "Institute of Languages and Business Administration",
+        "points": [
+          "Graduated with excellent grade",
+          "Built strong linguistic and business communication skills"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "overviewTitle": "Overview",
+    "overviewText": "Radwa provides consulting services for emerging companies in the export of medicinal and aromatic plants — helping them build strong foundations to compete effectively in global markets.",
+    "businessManagementTitle": "Business Management & Market Readiness",
+    "businessManagementPoints": {
+      "1": "Preparing companies to enter and operate effectively in the export market",
+      "2": "Developing management systems and workflow efficiency",
+      "3": "Supervising all departments and ensuring quality control procedures"
+    },
+    "marketingTitle": "Marketing & Customer Relations",
+    "marketingPoints": {
+      "1": "Building marketing strategies for international buyers",
+      "2": "Training teams on negotiation and communication skills",
+      "3": "Enhancing the company’s image and brand positioning in global markets"
+    },
+    "exportOpsTitle": "Export Operations & Documentation",
+    "exportOpsPoints": {
+      "1": "Guidance on export papers, permits, and compliance requirements",
+      "2": "Advising on shipping methods, delivery terms (Incoterms), and logistics planning",
+      "3": "Drafting payment terms and supporting banking transactions with importers"
+    },
+    "pricingTitle": "Product Pricing & Packaging",
+    "pricingPoints": {
+      "1": "Setting competitive pricing strategies for global markets",
+      "2": "Supervising product preparation and packaging according to international standards"
+    },
+    "certificationsTitle": "Certifications & Compliance",
+    "certificationsPoints": {
+      "1": "Assisting companies in obtaining international certifications",
+      "2": "Helping them meet qualification requirements to gain a competitive advantage"
+    }
+  },
+  "radwacv": {
+    "header": {
+      "hello": "Hello",
+      "im": "I’m",
+      "name": "Dr. Radwa Khalifa",
+      "title": "The heir of Hatshepsut",
+      "imageAlt": "Radwa Khalifa profile image"
+    },
+    "tabs": {
+      "autobiography": "Autobiography",
+      "experience": "Working Experience",
+      "education": "Educational Milestone",
+      "community": "Community Participation",
+      "initiatives": "Initiatives"
+    }
+  },
+  "community":{
+  "intro_title": "The change starts in the field, not in the office.",
+  "intro_paragraph": "Since 2006, Radwa has been moving across Egypt, turning her story in exporting medicinal and aromatic plants into a source of inspiration for farmers, students, and young entrepreneurs.",
+
+  "2016_year": "2016",
+  "standing_rural_women": "Standing with Rural Women",
+  "fayoum_workshop": "Fayoum. A workshop funded by GEMISA brought together rural women looking for hope in sustainable farming.",
+  "radwa_journey": "Radwa stood before them — not as a lecturer, but as someone who had walked the same path — sharing her own journey and proving that passion and persistence can turn agriculture into a life-changing story.",
+
+  "2017_year": "2017",
+  "little_exporter": "The 'Little Exporter Initiative'",
+  "south_valley_univ": "At South Valley University, in collaboration with UNIDO's Green Trade Initiative, Radwa introduced an idea that would reshape how youth see agriculture: learn it by living it.",
+  "initiative_impact": "Her 'Little Exporter Initiative' opened the door for students to work directly with farms and exporters, transforming theory into action.",
+
+  "2017_youth_year": "2017",
+  "year_of_youth": "The Year of Youth and Change",
+  "radwa_stage": "From 'It's Time' to 'The Successful Agricultural Engineer,' Radwa took the stage in universities across Egypt.",
+  "students_build": "She challenged students to stop waiting for opportunities — to build them.",
+  "employment_forum": "In Fayoum University's Employment Forum, she showed them real footage from the fields, letting them see what export looks like beyond the classroom.",
+
+  "2016_2018_year": "2016–2018",
+  "link_knowledge_land": "Linking Knowledge and the Land",
+  "seminars_conferences": "Between seminars and conferences, Radwa worked with researchers at Fayoum University to connect scientific studies with market realities.",
+  "research_meets_soil": "She believed that progress happens when research meets soil — when the lab talks to the land.",
+
+  "2018_2025_year": "2018-2025",
+  "voice_farmers_earth": "A Voice for Farmers and the Earth",
+  "radwa_office": "To this day, Radwa keeps her office open to students, researchers, and dreamers.",
+  "questions_to_action": "She helps them turn their questions into action, and their projects into impact.",
+  "success_shared": "Because for her, success only matters when it's shared.",
+
+  "still_teaching": "Still Teaching, Still Listening"
+  },
+  "Initiative":{
+  "little_exporter_title": "Little Exporter Initiative",
+  "little_exporter_subtitle": "Building a new generation of young Egyptian exporters",
+
+  "idea_title": "The Idea – Where It All Began",
+  "idea_paragraph_1_part1": "Born from the mind of a young Egyptian woman passionate about her field, the",
+  "idea_paragraph_1_bold1": "Little Exporter Initiative",
+  "idea_paragraph_1_part2": "was launched by Radwa ElKalifa, the youngest professional working in Egypt’s medicinal and aromatic plant export sector.",
+
+  "idea_paragraph_2_part1": "In",
+  "idea_paragraph_2_bold1": "March 2017",
+  "idea_paragraph_2_part2": "Radwa launched the initiative for the first time",
+  "idea_paragraph_2_bold2": "in Fayoum Governorate",
+  "idea_paragraph_2_part3": "fully",
+  "idea_paragraph_2_bold3": "funded and implemented by herself",
+
+  "idea_paragraph_3_part1": "Her vision was clear and inspiring:",
+  "idea_paragraph_3_bold1": "“An Egyptian product made by the hands of Egyptian youth.”",
+  "idea_paragraph_3_part2": "A movement that connects universities, farmers, and companies to build a new generation ready to export proudly.",
+
+  "dream_title": "From a Personal Dream to a National Effort",
+  "dream_paragraph_1": "Radwa invited agricultural faculties, associations, and major export companies to join hands and grow the initiative.",
+  "dream_paragraph_2": "It gained national attention, appearing on TV and radio, and Radwa was invited by UNIDO to present it at the Youth Employment Forum in South Valley University, Luxor — where it received praise from students, professors, and government officials alike.",
+
+  "motivation_title": "The Motivation – Why She Did It",
+  "motivation_1": "1. Her strong belief in developing Egypt’s export sector for medicinal and aromatic plants.",
+  "motivation_2": "2. Her desire to solve challenges at every stage of the export process — from harvesting and processing to approval by importers.",
+  "motivation_3": "3. Her aim to train agriculture graduates and enthusiasts through practical, hands-on learning in Fayoum’s rich plant ecosystem.",
+  "motivation_4": "4. Her effort to boost Egypt’s exports and national income by bringing foreign currency and supporting the economy during hard times.",
+  "motivation_5_part1": "5. Her ambition to create a globally competitive Egyptian product with a local identity —",
+  "motivation_5_bold1": "“An Egyptian product made by the hands of Egyptian youth.”",
+
+  "content_title": "The Content – Three Days of Learning and Action",
+  "content_day1_part1": "Day One:",
+  "content_day1_part2": "Theoretical sessions about export fundamentals, company structure, and legal procedures for establishing an export business.",
+  "content_day2_part1": "Day Two:",
+  "content_day2_part2": "Practical fieldwork — visiting farms, observing harvesting, drying, processing, and packaging stages.",
+  "content_day3_part1": "Day Three:",
+  "content_day3_part2": "Final sessions on loading containers, export logistics, and real problem-solving discussions with participants.",
+
+  "impact_title": "The Impact & Future Vision",
+  "impact_paragraph_1": "The Little Exporter Initiative stands as a remarkable milestone in Radwa’s mission to empower her community and support Egypt’s herbal export industry.",
+  "impact_paragraph_2": "It’s more than an initiative — it’s a movement of empowerment and knowledge.",
+  "impact_paragraph_3": "And the journey continues… through digital programs, partnerships, and a growing network of young Egyptians who believe they can reach the world."
+  },
+  "login": {
+    "title": "Log In",
+    "email": "Email",
+    "password": "Password",
+    "button": "Log In",
+    "forgotPassword": "Forget your password?",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "passwordRequired": "Please enter password"
+    }
+  },
+  "autobiography": {
+    "section1": {
+      "title": "Beginnings",
+      "subtitle": "The Spark of a Dream",
+      "text": "Radwa ElKhalifa’s journey began with a dream that many thought was impossible — to make her mark in the male-dominated world of exporting medicinal and aromatic plants. Coming from Fayoum, she carried not privilege but persistence. With nothing but personal savings, ambition, and belief in herself, she started from the bottom and steadily carved her way to the top."
+    },
+    "section2": {
+      "title": "Resilience",
+      "subtitle": "Turning Challenges into Strength",
+      "text": "Her path was never easy. Facing skepticism and barriers as a woman in business, Radwa transformed every challenge into motivation. She worked tirelessly to prove that expertise and determination know no gender. Over the years, she built “RadwaMinta,” a brand that stands for quality, honesty, and Egyptian excellence."
+    },
+    "section3": {
+      "title": "Gratitude & Legacy",
+      "subtitle": "The Power Behind Her Success",
+      "text": "Behind Radwa’s achievements stands a story of gratitude — to her parents for their values, her children for their inspiration, and her country for its spirit. Her philosophy is simple yet powerful: success isn’t given; it’s earned. Today, she dedicates her journey to every Egyptian woman who refuses to give up on her dream."
+    },
+    "media": {
+      "title": "Media Presence",
+      "subtitle": "Moments That Tell Her Story",
+      "text": "Through these interviews, Radwa shares her story, her dreams, and her belief in the power of persistence."
+    }
+  },
+  "forgotPassword":{
+  "password_recovery": "Password recovery",
+  "enter_email_reset": "Enter your email to reset your password",
+  "email_placeholder": "Enter your email",
+  "email_required": "Email is required",
+  "email_invalid": "Please enter a valid email",
+  "loading": "Loading...",
+  "reset_password": "Reset Password",
+  "verify_code": "Verify Code",
+  "enter_verification_code": "Enter the verification code sent to your email.",
+  "resend_after_seconds": "You can resend code in {{ timer }}s",
+  "resend_code": "Resend code",
+  "set_new_password": "Set New Password",
+  "enter_new_password": "Enter your new password and confirm it below.",
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password",
+  "password_required": "Password is required",
+  "password_min_length": "Password must be at least 8 characters",
+  "password_pattern": "Password must contain uppercase, lowercase, number, and special character",
+  "passwords_not_match": "Passwords do not match",
+  "saving": "Saving...",
+  "set_password": "Set Password"
+  },
+  "certificates": {
+    "certificate":"certificates",
+    "title":"RadwaMint’s Certificates",
+    "food_safety_title": "Egyptian Food Safety Authority Certification",
+    "food_safety_desc": "RadwaMinta is certified as the first center for packaging medicinal and aromatic plants in Fayoum and Egypt, led by a businesswoman on the White List of the Egyptian Food Safety Authority.",
+    "iso_title": "ISO 22000 Certification",
+    "iso_desc": "RadwaMinta is ISO 22000 certified, ensuring that all processes meet international standards for food safety and quality management, from sourcing to final packaging."
+  },
+  "about_us": {
+    "title": "About us",
+    "subtitle": "Natural products for a sustainable healthy life",
+    "radwaminta":"RadwaMinta",
+    "paragraph_1_rest": "is an Egyptian company working in the field of herbs since 2006 for producing, processing, and exporting herbs, spices, seeds, as well as natural oils of herbs and seeds. In 2011, we became the representative office for Millennium Herbs, a company in the USA that has a branch in Italy and another in China. So we are a global company with four branches around the world.",
+
+    "paragraph_2_part1": "is committed to the",
+    "highest_standards": "highest standards",
+    "paragraph_2_part2": "of business and work ethics to reach our goals, summarized as follows: to be your global resource for any of our A1 products and to gain the confidence of our clients.",
+
+    "paragraph_3_part1": "So we guarantee that you will have",
+    "special_product": "a special product",
+    "paragraph_3_part2": "with top-notch quality through continuous documentation and comprehensive testing – from growing and harvesting, right through processing and up to the finished product.",
+
+    "paragraph_4_part1": "In the meantime, we have",
+    "gained_confidence": "gained the confidence of",
+    "paragraph_4_part2": "a lot of",
+    "clients": "clients",
+    "paragraph_4_part3": "all over the world as a result of being actively cooperating with local and",
+    "foreign": "foreign",
+    "paragraph_4_part4": "companies.",
+
+    "paragraph_5_part1": "We offer our business partners real top-notch herbs, spices, and seeds with the most",
+    "competitive_price": "competitive price",
+    "paragraph_5_part2": "ever as these products are ours, they basically come from our farms."
+  }
+
+
+
+}

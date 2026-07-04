@@ -1,0 +1,27 @@
+@if (isLoading) {
+<div
+    class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white z-50"
+  >
+    <div class="spinner"></div>
+    <img src="/favicon.png" alt="image">
+  </div>
+}
+<!-- lang-change.component.html -->
+<label class="relative flex items-center cursor-pointer">
+  <input
+    type="checkbox"
+    class="sr-only peer"
+    [checked]="currentLang === 'ar'"
+    (change)="change()"
+  />
+  <div
+    class="peer rounded-full outline-none duration-100 after:duration-500 w-16 h-8 bg-[#E5E5EA] peer-focus:outline-none
+    after:content-['EN'] after:absolute after:outline-none after:rounded-full after:h-6 after:w-6 after:bg-[#7A4485] after:top-1 after:left-1
+    after:flex after:justify-center after:items-center after:text-white after:text-[11px] after:font-bold
+    peer-checked:after:translate-x-8 peer-checked:after:content-['AR'] peer-checked:after:border-white">
+  </div>
+</label>
+
+
+
+
