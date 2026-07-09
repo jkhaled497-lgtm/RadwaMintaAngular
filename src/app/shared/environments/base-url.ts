@@ -1,3 +1,3 @@
 export enum BaseUrl {
-    url = "https://radwaminta.runasp.net"
+    url = " http://localhost:5124"
 }
