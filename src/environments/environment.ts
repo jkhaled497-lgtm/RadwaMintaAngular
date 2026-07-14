@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:5124', // Local API
-    FilesURL: 'http://localhost:5124/files/' // Local API
+    apiUrl: 'https://khaled131122-001-site1.ftempurl.com', // Local API
+    FilesURL: 'https://khaled131122-001-site1.ftempurl.com/files/' // Local API
     
 };
