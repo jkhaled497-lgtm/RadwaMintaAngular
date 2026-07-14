@@ -164,7 +164,7 @@ export class ForgotPasswordComponent implements AfterViewInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
    private setPageTitle(): void {
-    const lang = localStorage.getItem('lang') === 'ar' ? 'ar' : 'en';
+    const lang = (typeof window !== 'undefined' && localStorage.getItem('lang') === 'ar') ? 'ar' : 'en';
     const titles: Record<string, string> = {
       en: 'Radwaminta | Forgot Password',
       ar: 'رضومنتا | نسيت كلمة المرور '

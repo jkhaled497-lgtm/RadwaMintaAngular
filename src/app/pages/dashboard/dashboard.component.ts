@@ -84,11 +84,13 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {  
     localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('email');
     this.router.navigate(['/home']);
   }
 
    private setPageTitle(): void {
-    const lang = localStorage.getItem('lang') === 'ar' ? 'ar' : 'en';
+    const lang = (typeof window !== 'undefined' && localStorage.getItem('lang') === 'ar') ? 'ar' : 'en';
     const titles: Record<string, string> = {
       en: 'Dashboard | Radwaminta',
       ar: 'لوحة التحكم | رضومنتا'

@@ -12,17 +12,75 @@
           <li><a routerLink="/story" routerLinkActive="active">{{ 'NAV.OUR_STORY' | translate }}</a></li>
           <li><a routerLink="/quality" routerLinkActive="active">{{ 'NAV.QUALITY' | translate }}</a></li>
           <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+          @if (isAdmin) {
+            <li><a routerLink="/client" routerLinkActive="active">Clients</a></li>
+          }
           <li><a routerLink="/radwacv" routerLinkActive="active">{{'footer.owner' | translate}}</a></li>
+
           <li>
             <app-lang-change></app-lang-change>
           </li>
         </ul>
       </nav>
 
-      <button id="menuBtn" (click)="toggleSidebar()">
-        <i class="fa-solid fa-bars"></i>
-        <span class="sr-only">{{ 'NAV.MENU' | translate }}</span>
-      </button>
+      <div class="flex items-center gap-4">
+        <!-- Profile Dropdown -->
+        @if (isLoggedIn) {
+        <div class="relative">
+          <!-- Profile Toggle Button -->
+          <div (click)="toggleProfileDropdown()" 
+               class="flex items-center gap-3 bg-white text-gray-700 px-1.5 py-1.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-[#4CE3A8] transition-all duration-300 cursor-pointer">
+            <div class="w-9 h-9 flex items-center justify-center bg-gradient-to-tr from-[#4CE3A8] to-[#36b986] text-white font-bold text-base rounded-full shadow-inner">
+              {{ userEmail ? userEmail.charAt(0).toUpperCase() : 'U' }}
+            </div>
+            <span class="font-medium text-sm max-w-[80px] sm:max-w-[150px] truncate" dir="ltr" style="direction: rtl; text-align: left;" [title]="userEmail">{{ userEmail }}</span>
+            <div class="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 mr-1 ltr:ml-1 rtl:mr-1 transition-transform" [class.rotate-180]="profileDropdownOpen">
+               <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </div>
+          </div>
+
+          <!-- Dropdown Menu -->
+          @if (profileDropdownOpen) {
+            <div class="absolute right-0 ltr:right-0 rtl:left-0 rtl:right-auto mt-3 w-64 max-w-[90vw] bg-white text-gray-700 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden z-50 origin-top-right transition-all">
+              <div class="px-5 py-4 border-b border-gray-50 bg-gray-50/50">
+                <p class="text-xs text-gray-500 mb-1">{{ 'NAV.SIGNED_IN_AS' | translate }}</p>
+                <p class="text-sm font-bold text-gray-800 truncate" dir="ltr" style="direction: rtl; text-align: right;">{{ userEmail }}</p>
+              </div>
+              <ul class="flex flex-col py-2">
+                <li>
+                  <a routerLink="/profile" (click)="toggleProfileDropdown()" class="flex items-center gap-3 px-5 py-3 hover:bg-[#4CE3A8]/10 hover:text-[#2BA274] transition-all cursor-pointer text-sm m-0 font-medium group">
+                    <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-white flex items-center justify-center text-gray-400 group-hover:text-[#2BA274] transition-colors">
+                      <i class="fa-regular fa-user"></i>
+                    </div>
+                    {{ 'NAV.PROFILE' | translate }}
+                  </a>
+                </li>
+                <!-- <li>
+                  <a class="flex items-center gap-3 px-5 py-3 hover:bg-[#4CE3A8]/10 hover:text-[#2BA274] transition-all cursor-pointer text-sm m-0 font-medium group">
+                    <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-white flex items-center justify-center text-gray-400 group-hover:text-[#2BA274] transition-colors">
+                      <i class="fa-solid fa-gear"></i>
+                    </div>
+                    {{ 'NAV.ACCOUNT_SETTINGS' | translate }}
+                  </a>
+                </li> -->
+                <li class="border-t border-gray-50 mt-2 pt-2">
+                  <a (click)="signOut()" class="flex items-center gap-3 px-5 py-3 hover:bg-red-50 text-red-600 transition-all cursor-pointer text-sm m-0 font-medium group">
+                    <div class="w-8 h-8 rounded-full bg-red-50/50 group-hover:bg-white flex items-center justify-center text-red-400 group-hover:text-red-500 transition-colors">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </div>
+                    {{ 'NAV.SIGN_OUT' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          }
+        </div>
+        }
+        <button id="menuBtn" (click)="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+          <span class="sr-only">{{ 'NAV.MENU' | translate }}</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
@@ -38,7 +96,17 @@
     <li><a routerLink="/story" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.OUR_STORY' | translate }}</a></li>
     <li><a routerLink="/quality" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.QUALITY' | translate }}</a></li>
     <li><a routerLink="/contact" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+    @if (isAdmin) {
+      <li><a routerLink="/client" routerLinkActive="active" (click)="toggleSidebar()">Clients</a></li>
+    }
     <li><a routerLink="/radwacv" routerLinkActive="active" (click)="toggleSidebar()">{{'footer.owner' | translate}}</a></li>
+    @if (isLoggedIn) {
+      <li class="w-2/3 mx-auto border-t border-gray-200 mt-2 pt-6"></li>
+      <li class="mx-auto text-[#4CE3A8] font-bold max-w-[200px] truncate mb-2" dir="ltr" style="direction: rtl; text-align: center;"><i class="fa-solid fa-user mr-2"></i> {{ userEmail }}</li>
+      <li><a routerLink="/profile" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.PROFILE' | translate }}</a></li>
+      <!-- <li><a class="cursor-pointer" (click)="toggleSidebar()">{{ 'NAV.ACCOUNT_SETTINGS' | translate }}</a></li> -->
+      <li><a class="cursor-pointer text-red-500 hover:text-red-600" (click)="signOut(); toggleSidebar()">{{ 'NAV.SIGN_OUT' | translate }}</a></li>
+    }
     <li class="mx-auto">
             <app-lang-change></app-lang-change>
       </li>

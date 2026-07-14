@@ -16,6 +16,7 @@ export class LoginComponent {
   private router = inject(Router);
   private titleService = inject(Title);
   errorMsg: string = '';
+  showPassword = false;
 
   form: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -27,7 +28,7 @@ export class LoginComponent {
   }
 
   private setPageTitle(): void {
-    const lang = localStorage.getItem('lang') === 'ar' ? 'ar' : 'en';
+    const lang = (typeof window !== 'undefined' && localStorage.getItem('lang') === 'ar') ? 'ar' : 'en';
     const titles: Record<string, string> = {
       en: 'Login | Radwaminta',
       ar: 'رضومنتا | تسجيل الدخول'
@@ -42,8 +43,10 @@ export class LoginComponent {
       this.authenticationService.login(this.form.value).subscribe({
         next: (res) => {
           if (res.success) {
-            localStorage.setItem('token', res.token);
-            this.router.navigate(['/dashboard']);
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('email', res.data.email);
+            localStorage.setItem('userType', res.data.userType);
+            this.router.navigate(['/home']);
           } else {
             this.errorMsg = res.message;
             setTimeout(() => {

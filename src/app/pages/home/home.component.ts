@@ -5,6 +5,7 @@ import { ReviewsSectionComponent } from "../../shared/components/reviews-section
 import { FeaturedProductsComponent } from "../../shared/components/featured-products/featured-products.component";
 import { ContactFormComponent } from "../../shared/components/contact-form/contact-form.component";
 import { HeroCounterComponent } from "../../shared/components/hero-counter/hero-counter.component";
+import { NewsTickerComponent } from "../../shared/components/news-ticker/news-ticker.component";
 import { Title, Meta } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -16,6 +17,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     FeaturedProductsComponent,
     ContactFormComponent,
     HeroCounterComponent,
+    NewsTickerComponent,
     TranslateModule
   ],
   templateUrl: './home.component.html',

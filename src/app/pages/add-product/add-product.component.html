@@ -1,0 +1,561 @@
+<div class="min-h-screen bg-[#F5F7FB] p-8 font-sans">
+  <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-sm border border-gray-100 flex overflow-hidden" style="min-height: 70vh;">
+    
+    <!-- Sidebar -->
+    <div class="w-64 border-r border-gray-100 bg-white flex flex-col">
+      <div class="p-4 border-b border-gray-50 flex items-center gap-2">
+        <i class="fa-solid fa-plus text-[#3b5998]"></i>
+        <h2 class="font-bold text-gray-800">{{ 'addProductModal.title' | translate }}</h2>
+      </div>
+
+      <div class="flex-1 overflow-y-auto">
+        <!-- Sidebar Item: Base Data -->
+        <div (click)="setTab('baseData')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'baseData'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'baseData', 'text-gray-800': activeTab !== 'baseData'}">
+                {{ 'productForm.baseData' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ 'productForm.requiredFields' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'baseData', 'text-gray-400': activeTab !== 'baseData'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Forms -->
+        <div (click)="setTab('forms')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'forms'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'forms', 'text-gray-800': activeTab !== 'forms'}">
+                {{ 'productForm.forms' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ productOptions.FORMS_EN.length }} {{ 'productForm.items' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'forms', 'text-gray-400': activeTab !== 'forms'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Active Ingredients -->
+        <div (click)="setTab('activeIngredients')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'activeIngredients'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'activeIngredients', 'text-gray-800': activeTab !== 'activeIngredients'}">
+                {{ 'productForm.activeIngredients' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ productOptions.ACTIVE_INGREDIENTS_EN.length }} {{ 'productForm.items' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'activeIngredients', 'text-gray-400': activeTab !== 'activeIngredients'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Harvest Season -->
+        <div (click)="setTab('harvestSeason')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'harvestSeason'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'harvestSeason', 'text-gray-800': activeTab !== 'harvestSeason'}">
+                {{ 'productForm.harvestSeason' | translate }}
+              </div>
+              <div class="text-xs text-gray-400 text-red-500">{{ 'productForm.required' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'harvestSeason', 'text-gray-400': activeTab !== 'harvestSeason'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Availability -->
+        <div (click)="setTab('availability')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'availability'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'availability', 'text-gray-800': activeTab !== 'availability'}">
+                {{ 'productForm.availability' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ productOptions.AVAILABILITY_EN.length }} {{ 'productForm.items' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'availability', 'text-gray-400': activeTab !== 'availability'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Container Capacity -->
+        <div (click)="setTab('containerCapacity')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'containerCapacity'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'containerCapacity', 'text-gray-800': activeTab !== 'containerCapacity'}">
+                {{ 'productForm.containerCapacity' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ productOptions.CONTAINER_CAPACITY_EN.length }} {{ 'productForm.items' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'containerCapacity', 'text-gray-400': activeTab !== 'containerCapacity'}"></i>
+        </div>
+
+        <!-- Sidebar Item: Natural Wonders -->
+        <div (click)="setTab('naturalWonders')" 
+             class="px-4 py-4 cursor-pointer flex items-center justify-between border-b border-gray-50 hover:bg-gray-50 transition-colors"
+             [ngClass]="{'bg-[#EBF3FF] border-l-4 border-l-[#3b5998] hover:bg-[#EBF3FF]': activeTab === 'naturalWonders'}">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded flex items-center justify-center bg-[#FF4F79]">
+              <i class="fa-solid fa-check text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-sm" [ngClass]="{'text-[#3b5998]': activeTab === 'naturalWonders', 'text-gray-800': activeTab !== 'naturalWonders'}">
+                {{ 'productForm.naturalWonders' | translate }}
+              </div>
+              <div class="text-xs text-gray-400">{{ productOptions.NATURAL_WONDERS_EN.length }} {{ 'productForm.items' | translate }}</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs" [ngClass]="{'text-[#3b5998]': activeTab === 'naturalWonders', 'text-gray-400': activeTab !== 'naturalWonders'}"></i>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col p-6 overflow-y-auto bg-white relative">
+      <form [formGroup]="productForm" (ngSubmit)="submitProduct()" class="flex-1 flex flex-col">
+        
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-900 mb-1">
+              @if(activeTab === 'baseData') { {{ 'productForm.baseData' | translate }} }
+              @if(activeTab === 'forms') { {{ 'productForm.forms' | translate }} }
+              @if(activeTab === 'activeIngredients') { {{ 'productForm.activeIngredients' | translate }} }
+              @if(activeTab === 'harvestSeason') { {{ 'productForm.harvestSeason' | translate }} }
+              @if(activeTab === 'availability') { {{ 'productForm.availability' | translate }} }
+              @if(activeTab === 'containerCapacity') { {{ 'productForm.containerCapacity' | translate }} }
+              @if(activeTab === 'naturalWonders') { {{ 'productForm.naturalWonders' | translate }} }
+            </h1>
+            <div class="text-sm text-gray-500">
+              @if(activeTab === 'baseData') { {{ 'productForm.coreDetails' | translate }} }
+              @if(activeTab === 'forms') { {{ productOptions.FORMS_EN.length }} {{ 'productForm.items' | translate }} }
+              @if(activeTab === 'activeIngredients') { {{ productOptions.ACTIVE_INGREDIENTS_EN.length }} {{ 'productForm.items' | translate }} }
+              @if(activeTab === 'harvestSeason') { {{ productOptions.HARVEST_SEASON_EN.length }} {{ 'productForm.items' | translate }} }
+              @if(activeTab === 'availability') { {{ productOptions.AVAILABILITY_EN.length }} {{ 'productForm.items' | translate }} }
+              @if(activeTab === 'containerCapacity') { {{ productOptions.CONTAINER_CAPACITY_EN.length }} {{ 'productForm.items' | translate }} }
+              @if(activeTab === 'naturalWonders') { {{ productOptions.NATURAL_WONDERS_EN.length }} {{ 'productForm.items' | translate }} }
+            </div>
+          </div>
+          
+          <!-- Metrics (only show if not baseData) -->
+          @if(activeTab !== 'baseData') {
+            <div class="flex gap-6 text-sm">
+              <div class="flex flex-col items-center">
+                <span class="text-gray-500">{{ 'productForm.total' | translate }}</span>
+                <span class="text-[#3b5998] font-bold text-lg">
+                  @if(activeTab === 'forms') { {{ getMetrics(productOptions.FORMS_EN.length, 'forms').total }} }
+                  @if(activeTab === 'activeIngredients') { {{ getMetrics(productOptions.ACTIVE_INGREDIENTS_EN.length, 'activeIngredients').total }} }
+                  @if(activeTab === 'harvestSeason') { {{ getMetrics(productOptions.HARVEST_SEASON_EN.length, 'harvestSeason').total }} }
+                  @if(activeTab === 'availability') { {{ getMetrics(productOptions.AVAILABILITY_EN.length, 'availability').total }} }
+                  @if(activeTab === 'containerCapacity') { {{ getMetrics(productOptions.CONTAINER_CAPACITY_EN.length, 'containerCapacity').total }} }
+                  @if(activeTab === 'naturalWonders') { {{ getMetrics(productOptions.NATURAL_WONDERS_EN.length, 'naturalWonders').total }} }
+                </span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="text-gray-500">{{ 'productForm.selected' | translate }}</span>
+                <span class="text-[#3b5998] font-bold text-lg">
+                  @if(activeTab === 'forms') { {{ getMetrics(productOptions.FORMS_EN.length, 'forms').selected }} }
+                  @if(activeTab === 'activeIngredients') { {{ getMetrics(productOptions.ACTIVE_INGREDIENTS_EN.length, 'activeIngredients').selected }} }
+                  @if(activeTab === 'harvestSeason') { {{ getMetrics(productOptions.HARVEST_SEASON_EN.length, 'harvestSeason').selected }} }
+                  @if(activeTab === 'availability') { {{ getMetrics(productOptions.AVAILABILITY_EN.length, 'availability').selected }} }
+                  @if(activeTab === 'containerCapacity') { {{ getMetrics(productOptions.CONTAINER_CAPACITY_EN.length, 'containerCapacity').selected }} }
+                  @if(activeTab === 'naturalWonders') { {{ getMetrics(productOptions.NATURAL_WONDERS_EN.length, 'naturalWonders').selected }} }
+                </span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="text-gray-500">{{ 'productForm.selectedPercentage' | translate }}</span>
+                <span class="text-[#3b5998] font-bold text-lg">
+                  @if(activeTab === 'forms') { {{ getMetrics(productOptions.FORMS_EN.length, 'forms').percentage }}% }
+                  @if(activeTab === 'activeIngredients') { {{ getMetrics(productOptions.ACTIVE_INGREDIENTS_EN.length, 'activeIngredients').percentage }}% }
+                  @if(activeTab === 'harvestSeason') { {{ getMetrics(productOptions.HARVEST_SEASON_EN.length, 'harvestSeason').percentage }}% }
+                  @if(activeTab === 'availability') { {{ getMetrics(productOptions.AVAILABILITY_EN.length, 'availability').percentage }}% }
+                  @if(activeTab === 'containerCapacity') { {{ getMetrics(productOptions.CONTAINER_CAPACITY_EN.length, 'containerCapacity').percentage }}% }
+                  @if(activeTab === 'naturalWonders') { {{ getMetrics(productOptions.NATURAL_WONDERS_EN.length, 'naturalWonders').percentage }}% }
+                </span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Error Message -->
+        @if(errorMsg) {
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {{ errorMsg }}
+          </div>
+        }
+
+        <!-- Base Data Content -->
+        <div [class.hidden]="activeTab !== 'baseData'" class="flex-1">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Name EN -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.nameEn' | translate }} <span class="text-red-500">*</span></label>
+              <input formControlName="name" type="text" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]">
+            </div>
+            <!-- Name AR -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.nameAr' | translate }} <span class="text-red-500">*</span></label>
+              <input formControlName="nameAr" type="text" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]" dir="rtl">
+            </div>
+
+            <!-- Scientific Name EN -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.scientificNameEn' | translate }} <span class="text-red-500">*</span></label>
+              <input formControlName="scientificName" type="text" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]">
+            </div>
+            <!-- Scientific Name AR -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.scientificNameAr' | translate }} <span class="text-red-500">*</span></label>
+              <input formControlName="scientificNameAr" type="text" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]" dir="rtl">
+            </div>
+
+            <!-- About EN -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.aboutEn' | translate }}</label>
+              <textarea formControlName="about" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]" rows="3"></textarea>
+            </div>
+            <!-- About AR -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.aboutAr' | translate }}</label>
+              <textarea formControlName="aboutAr" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]" dir="rtl" rows="3"></textarea>
+            </div>
+
+            <!-- Category -->
+            <div>
+              <label class="block text-sm font-medium mb-1">{{ 'addProductModal.category' | translate }} <span class="text-red-500">*</span></label>
+              <select formControlName="categoryId" class="w-full border rounded-lg px-3 py-2 outline-none focus:border-[#4CE3A8]">
+                <option value="0" disabled>{{ 'addProductModal.selectCategory' | translate }}</option>
+                <option value="1">Herbs</option>
+                <option value="2">Spices</option>
+                <option value="3">Seeds</option>
+              </select>
+            </div>
+            
+            <!-- Image -->
+            <div>
+              <label class="block text-sm font-medium mb-2">{{ 'productForm.image' | translate }} <span class="text-red-500">*</span></label>
+              <div class="mt-1 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer relative overflow-hidden"
+                   style="min-height: 12rem;" (click)="fileInput.click()">
+                <input #fileInput type="file" (change)="onFileChange($event)" accept="image/*" class="hidden">
+                @if (imagePreview) {
+                  <img [src]="imagePreview" alt="Preview" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                    <span class="text-white font-medium flex items-center gap-2"><i class="fa-solid fa-pen"></i> {{ 'productForm.changeImage' | translate }}</span>
+                  </div>
+                } @else {
+                  <div class="text-center py-6 px-4">
+                    <div class="w-12 h-12 rounded-full bg-[#EBF3FF] flex items-center justify-center mx-auto mb-3 text-[#3b5998]">
+                      <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700">{{ 'productForm.clickToUpload' | translate }}</p>
+                    <p class="text-xs text-gray-500 mt-1">{{ 'productForm.uploadFormat' | translate }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forms Content -->
+        <div [class.hidden]="activeTab !== 'forms'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.FORMS_EN; track $index) {
+                <div (click)="toggleSelection('forms', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('forms', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('forms', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('forms', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.FORMS_AR; track $index) {
+                <div (click)="toggleSelection('formsAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('formsAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('formsAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('formsAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Ingredients Content -->
+        <div [class.hidden]="activeTab !== 'activeIngredients'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.ACTIVE_INGREDIENTS_EN; track $index) {
+                <div (click)="toggleSelection('activeIngredients', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('activeIngredients', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('activeIngredients', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('activeIngredients', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.ACTIVE_INGREDIENTS_AR; track $index) {
+                <div (click)="toggleSelection('activeIngredientsAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('activeIngredientsAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('activeIngredientsAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('activeIngredientsAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Harvest Season Content -->
+        <div [class.hidden]="activeTab !== 'harvestSeason'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.HARVEST_SEASON_EN; track $index) {
+                <div (click)="toggleSelection('harvestSeason', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('harvestSeason', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('harvestSeason', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('harvestSeason', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.HARVEST_SEASON_AR; track $index) {
+                <div (click)="toggleSelection('harvestSeasonAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('harvestSeasonAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('harvestSeasonAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('harvestSeasonAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability Content -->
+        <div [class.hidden]="activeTab !== 'availability'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.AVAILABILITY_EN; track $index) {
+                <div (click)="toggleSelection('availability', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('availability', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('availability', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('availability', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.AVAILABILITY_AR; track $index) {
+                <div (click)="toggleSelection('availabilityAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('availabilityAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('availabilityAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('availabilityAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Container Capacity Content -->
+        <div [class.hidden]="activeTab !== 'containerCapacity'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.CONTAINER_CAPACITY_EN; track $index) {
+                <div (click)="toggleSelection('containerCapacity', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('containerCapacity', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('containerCapacity', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('containerCapacity', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.CONTAINER_CAPACITY_AR; track $index) {
+                <div (click)="toggleSelection('containerCapacityAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('containerCapacityAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('containerCapacityAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('containerCapacityAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Natural Wonders Content -->
+        <div [class.hidden]="activeTab !== 'naturalWonders'" class="flex-1 flex flex-col gap-8">
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">{{ 'productForm.english' | translate }}</h3>
+            <div class="flex flex-wrap gap-3">
+              @for (item of productOptions.NATURAL_WONDERS_EN; track $index) {
+                <div (click)="toggleSelection('naturalWonders', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('naturalWonders', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('naturalWonders', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('naturalWonders', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider text-right">{{ 'productForm.arabic' | translate }}</h3>
+            <div class="flex flex-wrap gap-3 justify-end" dir="rtl">
+              @for (item of productOptions.NATURAL_WONDERS_AR; track $index) {
+                <div (click)="toggleSelection('naturalWondersAr', item)"
+                     class="px-4 py-2 rounded-full border cursor-pointer select-none flex items-center gap-2 transition-all"
+                     [ngClass]="isSelected('naturalWondersAr', item) ? 'bg-[#F9FAFC] border-[#E2E8F0] text-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'">
+                  <div class="w-4 h-4 rounded-sm border flex items-center justify-center transition-colors"
+                       [ngClass]="isSelected('naturalWondersAr', item) ? 'bg-[#FF4F79] border-[#FF4F79]' : 'border-gray-300'">
+                    @if (isSelected('naturalWondersAr', item)) {
+                      <i class="fa-solid fa-check text-white" style="font-size: 0.6rem;"></i>
+                    }
+                  </div>
+                  <span class="text-sm font-medium">{{ item }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="mt-8 pt-4 border-t border-gray-100 flex items-center gap-3">
+          <button type="button" (click)="cancel()" class="px-6 py-2 rounded border border-red-400 text-red-500 hover:bg-red-50 font-medium transition-colors">
+            {{ 'addProductModal.cancel' | translate }}
+          </button>
+          <button type="submit" [disabled]="isSubmitting" class="px-6 py-2 rounded bg-[#3b5998] text-white hover:bg-[#2d4373] font-medium transition-colors disabled:opacity-50">
+            @if(isSubmitting) {
+              <i class="fa-solid fa-spinner fa-spin mr-2"></i> {{ 'addProductModal.saveProduct' | translate }}...
+            } @else {
+              {{ 'addProductModal.saveProduct' | translate }}
+            }
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Harvest Validation Modal -->
+@if(showHarvestModal) {
+  <div class="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-xl transform transition-all">
+      <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fa-solid fa-leaf text-red-500 text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">{{ 'productForm.harvestRequiredTitle' | translate }}</h3>
+      <p class="text-gray-500 mb-6 text-sm">{{ 'productForm.harvestRequiredMsg' | translate }}</p>
+      <button type="button" (click)="showHarvestModal = false; setTab('harvestSeason')" class="w-full bg-[#3b5998] text-white py-3 rounded-xl font-semibold hover:bg-[#2d4373] transition-colors shadow-sm">
+        {{ 'productForm.selectHarvestSeason' | translate }}
+      </button>
+    </div>
+  </div>
+}

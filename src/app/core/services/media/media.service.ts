@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseUrl } from '../../../shared/environments/base-url';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,10 @@ export class MediaService {
 
   getMediaLinks():Observable<any>
   {
-    return this.httpClient.get(`${BaseUrl.url}/api/Media/MediaLinks`);
+    return this.httpClient.get(`${environment.apiUrl}/api/Media/MediaLinks`);
   }
   getWhatsAppLink():Observable<any>
   {
-    return this.httpClient.get(`${BaseUrl.url}/api/Media/WhatsAppLink`)
+    return this.httpClient.get(`${environment.apiUrl}/api/Media/WhatsAppLink`)
   }
 }

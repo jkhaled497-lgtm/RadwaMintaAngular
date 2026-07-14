@@ -1,30 +1,40 @@
-<div class="product">
+<div class="product relative">
+  @if (isAdmin) {
+    <div class="absolute top-2 right-2 flex gap-2 z-10">
+      <button (click)="onEdit($event)" class="bg-white/90 hover:bg-white text-blue-600 w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm" title="Edit Product">
+        <i class="fa-solid fa-pen"></i>
+      </button>
+      <button (click)="onDelete($event)" class="bg-white/90 hover:bg-white text-red-600 w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm" title="Delete Product">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  }
         <div class="cursor-pointer outline-none" [routerLink]="['/products',product.id]">
             <picture class="w-full rounded-2xl overflow-hidden block">
             <img
                 loading="lazy"
-                class="w-full transition"
-                [src]="product.pictureUrl"
+                class="w-full aspect-[4/3] object-cover transition"
+                [src]="environmentImageUrl + product.pictureUrl"
                 alt="product"
             />
             </picture>
             <h3 class="product-title text-base font-bold mt-1 whitespace-nowrap">
-                {{product.name}}
-                @if(product.scientificName){
-                ({{product.scientificName}})
+                {{ currentLang === 'ar' ? (product.nameAr || product.name) : product.name }}
+                @if(product.scientificName || product.scientificNameAr) {
+                ({{ currentLang === 'ar' ? (product.scientificNameAr || product.scientificName) : product.scientificName }})
                 }
             </h3>
             
             <div class="flex  text-base mt-1">
                 <b>{{'productCard.forms' | translate}}:</b>
                 <p class="form ms-2 whitespace-nowrap"> 
-                @for (form of product.forms.slice(0, 3); track $index) {
+                @for (form of (currentLang === 'ar' && product.formsAr?.length ? product.formsAr : product.forms)?.slice(0, 3); track $index) {
                     @if(!$first){ ⭒ }{{form}}
                 }
                 </p>
             </div>
             <div class="flex text-base mt-1">
-                <b>{{'productCard.harvest' | translate}}:</b><pre> {{product.harvestSeason[0]}} </pre>
+                <b>{{'productCard.harvest' | translate}}:</b><pre> {{(currentLang === 'ar' && product.harvestSeasonAr?.length ? product.harvestSeasonAr : product.harvestSeason)?.[0]}} </pre>
             </div>
         </div>
             <button [disabled]="isLoading" (click)="orderNow()" class="main-btn-secondary mt-2 w-full font-semibold block text-center">

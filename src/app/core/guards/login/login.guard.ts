@@ -4,14 +4,17 @@ import { jwtDecode } from 'jwt-decode';
 
 export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const token = localStorage.getItem('token');
+  let token: string | null = null;
+  if (typeof window !== 'undefined' && window.localStorage) {
+    token = localStorage.getItem('token');
+  }
 
   if (token) {
     try {
       const decodedToken: any = jwtDecode(token);
       const isTokenExpired = decodedToken.exp < Date.now() / 1000;
       if (!isTokenExpired) {
-        router.navigate(['/dashboard']);
+        router.navigate(['/home']);
         return false;
       } else {
         localStorage.removeItem('token');

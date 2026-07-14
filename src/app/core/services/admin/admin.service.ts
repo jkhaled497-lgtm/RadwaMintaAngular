@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BaseUrl } from '../../../shared/environments/base-url';
 import { MediaLinks } from '../../../shared/interfaces/media-links';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AdminService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return  this.httpClient.get(`${BaseUrl.url}/api/Admin/MediaLinks`,{headers});
+    return  this.httpClient.get(`${environment.apiUrl}/api/Admin/MediaLinks`,{headers});
   }
   updateMediaLinks(form: MediaLinks): Observable<any> {
     const token = localStorage.getItem('token');
@@ -25,7 +25,7 @@ export class AdminService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-    return this.httpClient.put(`${BaseUrl.url}/api/Admin/UpdateMediaLinks`, form, { headers, responseType: 'text' });
+    return this.httpClient.put(`${environment.apiUrl}/api/Admin/UpdateMediaLinks`, form, { headers, responseType: 'text' });
   }
 
 }

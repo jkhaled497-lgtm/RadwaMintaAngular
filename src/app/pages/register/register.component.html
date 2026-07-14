@@ -1,0 +1,149 @@
+<section class="py-7">
+  <div class="container">
+    <div
+      class="login bg px-10 py-20 md:p-32 lg:p-44 bg-cover md:bg-contain min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
+    >
+      <h2
+        class="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center"
+      >
+        {{ 'REGISTER_PAGE.TITLE' | translate }}
+      </h2>
+
+      <form
+        [formGroup]="registerForm"
+        class="md:max-w-[60%] mx-auto flex flex-col gap-5 mt-7"
+      >
+        <!-- Email -->
+        <div>
+          <input
+            formControlName="email"
+            class="px-3 py-2 rounded-lg w-full border outline-none"
+            type="email"
+            placeholder="{{ 'REGISTER_PAGE.EMAIL' | translate }}"
+          />
+          @if (registerForm.get('email')?.touched) {
+            @if (registerForm.get('email')?.getError('required')) {
+            <p class="text-red-500 text-sm sm:text-base">{{ 'REGISTER_PAGE.EMAIL_REQUIRED' | translate }}</p>
+            }
+            @if (registerForm.get('email')?.getError('email')) {
+            <p class="text-red-500 text-sm sm:text-base">{{ 'REGISTER_PAGE.EMAIL_INVALID' | translate }}</p>
+            }
+          }
+        </div>
+
+        <!-- Password -->
+        <div>
+          <div class="relative">
+            <input
+              formControlName="password"
+              class="px-3 py-2 rounded-lg w-full border outline-none pr-10 ltr:pr-10 ltr:pl-3 rtl:pr-3 rtl:pl-10"
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="{{ 'REGISTER_PAGE.PASSWORD' | translate }}"
+            />
+            <button 
+              type="button" 
+              (click)="togglePasswordVisibility()"
+              class="absolute inset-y-0 right-3 ltr:right-3 ltr:left-auto rtl:right-auto rtl:left-3 flex items-center text-gray-500 hover:text-[#7A4485] focus:outline-none"
+            >
+              <i class="fa-regular" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </div>
+          @if (registerForm.get('password')?.touched) {
+            @if (registerForm.get('password')?.getError('required')) {
+            <p class="text-red-500 text-sm sm:text-base">{{ 'REGISTER_PAGE.PASSWORD_REQUIRED' | translate }}</p>
+            }
+            @if (registerForm.get('password')?.getError('minlength')) {
+            <p class="text-red-500 text-sm sm:text-base">{{ 'REGISTER_PAGE.PASSWORD_MINLENGTH' | translate }}</p>
+            }
+          }
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <div class="flex items-center border rounded-lg overflow-hidden bg-white focus-within:ring-1 focus-within:border-black">
+            @if (selectedCountryCode) {
+              <span class="px-3 py-2 bg-gray-100 border-r text-gray-700 min-w-[50px] text-center shrink-0 ltr:border-r rtl:border-l">
+                {{ selectedCountryCode }}
+              </span>
+            }
+            <input
+              formControlName="phoneNumber"
+              class="px-3 py-2 w-full outline-none"
+              type="tel"
+              (keypress)="numberOnly($event)"
+              placeholder="{{ 'REGISTER_PAGE.PHONE' | translate }}"
+              style="direction: ltr;"
+            />
+          </div>
+          @if (registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.getError('required')) {
+            <p class="text-red-500 text-sm sm:text-base">{{ 'REGISTER_PAGE.PHONE_REQUIRED' | translate }}</p>
+          }
+        </div>
+
+        <!-- Country (Dropdown) -->
+        <div class="relative">
+          <select
+            formControlName="countryId"
+            class="px-3 py-2 rounded-lg w-full border outline-none bg-white appearance-none pr-10 cursor-pointer"
+          >
+            <option value="" disabled selected>{{ 'REGISTER_PAGE.COUNTRY_SELECT' | translate }}</option>
+            @for (country of countries; track country.id) {
+              <option [value]="country.id">
+                {{ currentLang === 'ar' ? country.nameAr : country.nameEn }}
+              </option>
+            }
+          </select>
+          <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-500">
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+          </div>
+          @if (registerForm.get('countryId')?.touched && registerForm.get('countryId')?.getError('required')) {
+            <p class="text-red-500 text-sm sm:text-base mt-1">
+              {{ 'REGISTER_PAGE.COUNTRY_REQUIRED' | translate }}
+            </p>
+          }
+        </div>
+
+        <!-- User Type -->
+        <div>
+          <label class="block text-sm sm:text-base font-semibold mb-2 text-[#7A4485]">
+            {{ 'REGISTER_PAGE.ACCOUNT_TYPE' | translate }}
+          </label>
+          <div class="flex items-center gap-6">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" formControlName="userType" [value]="0" class="w-4 h-4 accent-[#7A4485]">
+              <span class="text-sm sm:text-base">{{ 'REGISTER_PAGE.CLIENT' | translate }}</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" formControlName="userType" [value]="1" class="w-4 h-4 accent-[#7A4485]">
+              <span class="text-sm sm:text-base">{{ 'REGISTER_PAGE.SUPPLIER' | translate }}</span>
+            </label>
+          </div>
+          @if (registerForm.get('userType')?.touched && registerForm.get('userType')?.getError('required')) {
+            <p class="text-red-500 text-sm sm:text-base mt-1">
+              {{ 'REGISTER_PAGE.ACCOUNT_TYPE_REQUIRED' | translate }}
+            </p>
+          }
+        </div>
+
+        <div>
+          <p class="text-red-500 text-sm sm:text-base">{{ errorMessage }}</p>
+          <button
+            type="submit"
+            (click)="onSubmit()"
+            [disabled]="registerForm.invalid || isLoading"
+            class="block cursor-pointer text-center w-full mx-auto px-8 md:px-20 py-2 md:py-3 text-base md:text-lg font-medium rounded-lg bg-[#7A4485] text-white mt-4 hover:bg-[#6a3a75] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {{ isLoading ? ('REGISTER_PAGE.REGISTERING_BTN' | translate) : ('REGISTER_PAGE.REGISTER_BTN' | translate) }}
+          </button>
+        </div>
+
+        <a
+          routerLink="/login"
+          class="text-[#7A4485] font-semibold text-center"
+        >
+          {{ 'REGISTER_PAGE.ALREADY_HAVE_ACCOUNT' | translate }}
+        </a>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,134 @@
+<!-- Floating Chat Button -->
+<button class="chat-widget-btn" (click)="toggleChat()" *ngIf="!isChatOpen">
+  <div class="unread-badge global" *ngIf="totalUnreadCount > 0 && !isChatLoading">{{ totalUnreadCount }}</div>
+  <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" *ngIf="!isChatLoading">
+    <path d="M12 2C6.48 2 2 5.84 2 10.5c0 2.67 1.48 5.04 3.78 6.55L4.5 22l4.83-2.67c.85.24 1.76.37 2.67.37 5.52 0 10-3.84 10-8.5S17.52 2 12 2zm1.09 11.59l-2.48-2.65-4.83 2.65 5.3-5.65 2.48 2.65 4.83-2.65-5.3 5.65z"></path>
+  </svg>
+  <i class="fa-solid fa-spinner fa-spin text-white text-2xl" *ngIf="isChatLoading"></i>
+</button>
+
+<!-- Chat Widget Window -->
+<div class="chat-widget-window" [class.open]="isChatOpen">
+  <!-- Sidebar / Chat List -->
+  <aside class="chat-sidebar" [class.hidden]="activeConversation !== null">
+    <div class="sidebar-header">
+      <h2>Chats</h2>
+      <button class="close-btn" (click)="toggleChat()">×</button>
+    </div>
+    
+    <!-- Admin View with Tabs -->
+    <div class="conversations-list" *ngIf="isAdmin">
+      <div class="tabs-header">
+        <button class="tab-btn" [class.active]="activeTab === 'system'" (click)="activeTab = 'system'">
+          Public chat <span *ngIf="publicUnreadCount > 0" class="tab-badge">{{publicUnreadCount}}</span>
+        </button>
+        <button class="tab-btn" [class.active]="activeTab === 'users'" (click)="activeTab = 'users'">
+          Private chat <span *ngIf="privateUnreadCount > 0" class="tab-badge">{{privateUnreadCount}}</span>
+        </button>
+      </div>
+
+      <!-- System Tab Content -->
+      <div class="tab-content" *ngIf="activeTab === 'system'">
+        <div class="conversation-item" *ngFor="let conv of adminSystemChats" (click)="selectConversation(conv)">
+          <div class="avatar"><span class="initial">{{ conv.nameEn.charAt(0) }}</span></div>
+          <div class="conv-info">
+            <div class="conv-name">{{ conv.nameEn }}</div>
+            <div class="conv-preview">{{ conv.lastMessage || (isConversationJoined(conv.id) ? 'Joined' : 'Click to Join') }}</div>
+          </div>
+          <div class="unread-badge" *ngIf="conv.unreadCount && conv.unreadCount > 0">{{ conv.unreadCount }}</div>
+        </div>
+      </div>
+
+      <!-- Users Tab Content -->
+      <div class="tab-content" *ngIf="activeTab === 'users'">
+        <div *ngIf="adminUserChats.length === 0" class="no-chats-msg">No private chats from users yet.</div>
+        <div class="conversation-item" *ngFor="let conv of adminUserChats" (click)="selectConversation(conv)">
+          <div class="avatar">
+            <img *ngIf="conv.imageUrl" [src]="environmentImageUrl+conv.imageUrl" alt="User Image" />
+            <span class="initial" *ngIf="!conv.imageUrl">{{ conv.nameEn.charAt(0) }}</span>
+          </div>
+          <div class="conv-info">
+            <div class="conv-name">{{ conv.nameEn }}</div>
+            <div class="conv-preview">{{ conv.lastMessage || 'Start the conversation!' }}</div>
+          </div>
+          <div class="unread-badge" *ngIf="conv.unreadCount && conv.unreadCount > 0">{{ conv.unreadCount }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Normal User View -->
+     <div class="conversations-list" *ngIf="!isAdmin">
+      <div 
+        class="conversation-item" 
+        *ngFor="let convDef of normalUserChats"
+        (click)="selectNormalUserChat(convDef)">
+        <div class="avatar">
+          <span class="initial">{{ convDef.icon }}</span>
+        </div>
+        <div class="conv-info">
+          <div class="conv-name">{{ convDef.nameEn }}</div>
+          <div class="conv-preview" *ngIf="convDef.lastMessage">{{ convDef.lastMessage }}</div>
+          <div class="conv-preview" *ngIf="!convDef.lastMessage">{{ convDef.isAction ? 'Start/Open Private Chat' : 'Group Room' }}</div>
+        </div>
+        <div class="unread-badge" *ngIf="convDef.unreadCount > 0">{{ convDef.unreadCount }}</div>
+      </div>
+    </div> 
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="chat-main" [class.hidden]="activeConversation === null">
+    <header class="chat-header" *ngIf="activeConversation">
+      <button class="back-btn" (click)="activeConversation = null">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path>
+        </svg>
+      </button>
+      <div class="avatar">
+        <img *ngIf="activeConversation.imageUrl" [src]="environmentImageUrl+activeConversation.imageUrl" alt="User Image" />
+        <span class="initial" *ngIf="!activeConversation.imageUrl">{{ activeConversation.nameEn.charAt(0) }}</span>
+      </div>
+      <div class="chat-title">
+        <h3>{{ activeConversation.nameEn }}</h3>
+        <span class="status">Active Now</span>
+      </div>
+      <button class="close-btn" (click)="toggleChat()">×</button>
+    </header>
+
+    <div class="chat-messages" id="chat-messages-container" (scroll)="onScroll($event)">
+      <div *ngIf="isLoadingMore" class="loading-more">Loading previous messages...</div>
+      
+      <div *ngIf="messages.length === 0" class="no-messages">
+        <p>No messages yet. Start the conversation!</p>
+      </div>
+      
+      <div 
+        class="message-row" 
+        *ngFor="let msg of messages"
+        [class.mine]="msg.senderId === currentUserId"
+        [class.theirs]="msg.senderId !== currentUserId">
+        
+        <div class="message-bubble">
+          <div class="message-sender" *ngIf="msg.senderId !== currentUserId">{{ msg.senderName }}</div>
+          <div class="message-content">{{ msg.content }}</div>
+          <div class="message-time">{{ msg.createdAt | date:'shortTime' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="chat-input-area" *ngIf="activeConversation">
+      <div class="input-container">
+        <input 
+          type="text" 
+          [(ngModel)]="newMessage" 
+          (keyup.enter)="sendMessage()" 
+          placeholder="Type a message..." 
+          class="message-input" />
+        <button class="send-btn" (click)="sendMessage()" [disabled]="!newMessage.trim()">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </main>
+</div>

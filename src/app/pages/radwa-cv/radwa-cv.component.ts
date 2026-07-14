@@ -28,8 +28,7 @@ export class RadwaCVComponent implements OnInit {
   lang: Lang = 'en';
 
   constructor(private titleService: Title) {
-    const saved = localStorage.getItem('lang');
-    this.lang = saved === 'ar' ? 'ar' : 'en';
+    this.lang = (typeof window !== 'undefined' && localStorage.getItem('lang') === 'ar') ? 'ar' : 'en';
   }
 
   ngOnInit(): void {

@@ -7,6 +7,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { routes } from './app.routes';
 import { paramsLangInterceptor } from './core/interceptors/paramsLang/params-lang.interceptor';
+import { authInterceptor } from './core/interceptors/auth/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http, '/i18n/', '.json');
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
-    provideHttpClient(withFetch(),withInterceptors([paramsLangInterceptor])),
+    provideHttpClient(withFetch(),withInterceptors([authInterceptor, paramsLangInterceptor])),
     provideClientHydration(withEventReplay()),
     importProvidersFrom(
        TranslateModule.forRoot({

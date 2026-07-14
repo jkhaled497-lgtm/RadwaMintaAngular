@@ -1,0 +1,16 @@
+@if (!isLoading && currentTickerItems.length > 0) {
+  <div class="ticker-wrap" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="ticker-content">
+      @for (item of currentTickerItems; track $index) {
+        @if (item.isDynamic) {
+          <span class="ticker-item">
+            <i class="fa-solid fa-leaf mx-2"></i> {{ item.about }}
+            <i class="fa-solid fa-leaf mx-2"></i> {{ item.description }}
+          </span>
+        } @else {
+          <span class="ticker-item"><i class="fa-solid fa-leaf mx-2"></i> {{ item.text }}</span>
+        }
+      }
+    </div>
+  </div>
+}

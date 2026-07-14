@@ -7,7 +7,8 @@ export const paramsLangInterceptor: HttpInterceptorFn = (req, next) => {
       : 'en';
 
   const clonedReq = req.clone({
-    setParams: { lang }
+    setParams: { lang },
+    setHeaders: { 'Accept-Language': lang }
   });
 
   return next(clonedReq);

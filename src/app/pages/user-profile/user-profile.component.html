@@ -1,0 +1,126 @@
+<section class="py-12 bg-gray-50 min-h-[calc(100vh-100px)] flex items-center justify-center">
+  <div class="container max-w-2xl px-4">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 relative">
+      
+      <!-- Loading Overlay -->
+      @if (isLoading) {
+        <div class="absolute inset-0 bg-white/80 z-10 flex items-center justify-center">
+          <i class="fa-solid fa-circle-notch fa-spin text-4xl text-[#4CE3A8]"></i>
+        </div>
+      }
+
+      <!-- Alert Messages -->
+      @if (successMsg) {
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-full shadow-lg z-20 text-sm font-medium animate-fade-in-down">
+          {{ successMsg }}
+        </div>
+      }
+      @if (errorMsg) {
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-red-500 text-white px-6 py-2 rounded-full shadow-lg z-20 text-sm font-medium animate-fade-in-down">
+          {{ errorMsg }}
+        </div>
+      }
+
+      <div class="bg-[#1A1F2B] h-32 relative">
+        <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 group">
+          <div class="w-24 h-24 rounded-full border-4 border-white bg-[#AFAFAF] flex items-center justify-center text-4xl font-bold text-black shadow-lg overflow-hidden relative">
+            @if (imageUrl) {
+              <img [src]="getImagePath(imageUrl)" alt="Profile Picture" class="w-full h-full object-cover" />
+            } @else {
+              <span>{{ userEmail ? userEmail.charAt(0).toUpperCase() : 'U' }}</span>
+            }
+            
+            <!-- Upload Overlay -->
+            <label class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer flex items-center justify-center text-white">
+              @if (isUploading) {
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+              } @else {
+                <i class="fa-solid fa-camera"></i>
+              }
+              <input type="file" accept="image/*" class="hidden" (change)="onFileSelected($event)">
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pt-16 pb-4 px-6 text-center">
+        <h1 class="text-2xl font-bold text-gray-800 mb-1">{{ userName || userEmail }}</h1>
+        <span class="inline-block px-3 py-1 rounded-full text-sm font-medium bg-[#4CE3A8]/10 text-[#2ba878]">
+          {{ userType }}
+        </span>
+      </div>
+      
+      <div class="px-8 py-6 bg-gray-50/50 border-t border-gray-100">
+        <form [formGroup]="form" (ngSubmit)="saveProfile()" class="flex flex-col gap-5">
+          
+          <!-- User Name -->
+          <div class="flex flex-col gap-1.5">
+            <label for="userName" class="text-sm font-medium text-gray-700">User Name</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-regular fa-user text-gray-400"></i>
+              </div>
+              <input type="text" id="userName" formControlName="userName" placeholder="Enter your user name"
+                     class="w-full pl-11 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-[#4CE3A8] focus:ring-2 focus:ring-[#4CE3A8]/20 transition-all outline-none text-gray-700 font-medium">
+            </div>
+          </div>
+
+          <!-- Email (Readonly) -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-gray-700">{{ 'PROFILE_PAGE.EMAIL_ADDRESS' | translate }}</label>
+            <div class="flex items-center gap-3 px-4 py-3 bg-gray-100 rounded-xl border border-gray-200">
+              <i class="fa-regular fa-envelope text-gray-400"></i>
+              <span class="text-gray-600 font-medium">{{ userEmail }}</span>
+            </div>
+          </div>
+          
+          <!-- Phone Number (Readonly) -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-gray-700">{{ 'PROFILE_PAGE.PHONE_NUMBER' | translate }}</label>
+            <div class="flex items-center gap-3 px-4 py-3 bg-gray-100 rounded-xl border border-gray-200">
+              <i class="fa-solid fa-phone text-gray-400"></i>
+              <span class="text-gray-600 font-medium" [class.text-gray-400]="!phoneNumber">{{ phoneNumber || ('PROFILE_PAGE.NOT_PROVIDED' | translate) }}</span>
+            </div>
+          </div>
+          
+          <!-- Date of Birth -->
+          <div class="flex flex-col gap-1.5">
+            <label for="dataBirthDate" class="text-sm font-medium text-gray-700">{{ 'PROFILE_PAGE.DATE_OF_BIRTH' | translate }}</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-regular fa-calendar text-gray-400"></i>
+              </div>
+              <input type="date" id="dataBirthDate" formControlName="dataBirthDate" 
+                     class="w-full pl-11 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-[#4CE3A8] focus:ring-2 focus:ring-[#4CE3A8]/20 transition-all outline-none text-gray-700 font-medium">
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="flex flex-col gap-1.5">
+            <label for="address" class="text-sm font-medium text-gray-700">{{ 'PROFILE_PAGE.ADDRESS' | translate }}</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-solid fa-location-dot text-gray-400"></i>
+              </div>
+              <input type="text" id="address" formControlName="address" [placeholder]="'PROFILE_PAGE.ADDRESS_PLACEHOLDER' | translate"
+                     class="w-full pl-11 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-[#4CE3A8] focus:ring-2 focus:ring-[#4CE3A8]/20 transition-all outline-none text-gray-700 font-medium">
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="mt-4">
+            <button type="submit" [disabled]="isSaving || isLoading" 
+                    class="w-full bg-[#1A1F2B] hover:bg-[#2A3143] text-white font-bold py-3.5 px-6 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-md">
+              @if (isSaving) {
+                <i class="fa-solid fa-circle-notch fa-spin"></i> {{ 'PROFILE_PAGE.SAVING' | translate }}
+              } @else {
+                <i class="fa-solid fa-check"></i> {{ 'PROFILE_PAGE.SAVE_CHANGES' | translate }}
+              }
+            </button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

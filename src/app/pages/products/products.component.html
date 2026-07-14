@@ -1,8 +1,40 @@
 <section class="py-7">
+    <!-- News Ticker -->
+    <div class="ticker-wrap mb-8 mt-[-1rem]" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+        <div class="ticker-content">
+            @for (item of currentTickerItems; track $index) {
+                @if (item.isDynamic) {
+                    <span class="ticker-item">
+                        <!-- <i class="fa-solid fa-leaf mx-2"></i> {{ item.name }} -->
+                        <i class="fa-solid fa-leaf mx-2"></i> {{ item.about }}
+                        <i class="fa-solid fa-leaf mx-2"></i> {{ item.description }}
+                    </span>
+                } @else {
+                    <span class="ticker-item"><i class="fa-solid fa-leaf mx-2"></i> {{ item.text }}</span>
+                }
+            }
+        </div>
+    </div>
+
     <div class="container">
         <div class="flex items-center gap-2">
             <div class="section-title">{{'products.title' | translate}}</div>
-            <span>{{products.length}}</span>
+            <span class="text-gray-500 font-medium">{{products.length}}</span>
+            @if (isAdmin) {
+                <div class="flex gap-2 ml-2" [class.mr-2]="currentLang === 'ar'">
+                    <button (click)="openAddModal()" class="bg-[#4CE3A8] hover:bg-[#3bc48d] text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm" title="Add Product">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <!-- Add News Ticker -->
+                    <button (click)="openAddNewsModal()" class="bg-blue-500 hover:bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm" title="Add News Ticker">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </button>
+                    <!-- Manage News Ticker -->
+                    <button (click)="openManageNewsModal()" class="bg-gray-500 hover:bg-gray-600 text-white w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm" title="Manage News Tickers">
+                        <i class="fa-solid fa-list"></i>
+                    </button>
+                </div>
+            }
         </div>
         <span class="text-black opacity-80  mt-4 block">{{'products.filterBy' | translate}}</span>
         @if (loadingCategories) {
@@ -19,11 +51,26 @@
         <div class="categories flex flex-wrap items-center mt-2 gap-2 lg:gap-4">
             <div [class.active]="activeCategory == 'All' " (click)="getAllProducts()" class="category">{{'products.all' | translate}}</div>
             @for (category of allCategories; track $index) {
-                <div [class.active]="activeCategory == category.name" class="category" (click)="getProductsByCategory(category.id,category.name)">{{category.name}}</div>
+                <div [class.active]="activeCategory == category.name" class="category" (click)="getProductsByCategory(category.id,category.name)">
+                    {{ currentLang === 'ar' ? (category.nameAr || category.name) : category.name }}
+                </div>
             }
         </div>
         }
         
+        <!-- Search Box -->
+        <div class="mt-6 mb-2 flex justify-center sm:justify-start mx-3 sm:mx-0">
+            <div class="relative w-full sm:max-w-md">
+                <i class="fa-solid fa-search absolute top-1/2 -translate-y-1/2 text-gray-400"
+                   [class.left-4]="currentLang === 'en'" [class.right-4]="currentLang === 'ar'"></i>
+                <input type="text" [value]="searchTerm" (input)="onSearchChange($event)"
+                       placeholder="{{ currentLang === 'ar' ? 'البحث عن منتج...' : 'Search for a product...' }}"
+                       class="w-full py-2 border rounded-full outline-none focus:border-[#4CE3A8] transition-colors bg-white shadow-sm"
+                       [class.pl-10]="currentLang === 'en'" [class.pr-4]="currentLang === 'en'"
+                       [class.pr-10]="currentLang === 'ar'" [class.pl-4]="currentLang === 'ar'">
+            </div>
+        </div>
+
         <div class="products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-7 mx-3 sm:mx-0">
         <!-- Product Card -->
         @if (LoadingProducts) {
@@ -33,9 +80,37 @@
         }
         @else {
         @for (product of products; track $index) {
-            <app-product-card [product]="product"></app-product-card>
+            <app-product-card [product]="product" (edit)="openUpdateModal($event)" (delete)="openDeleteModal($event)"></app-product-card>
         }
         }
         </div>
     </div>
 </section>
+
+
+@if (isDeleteModalOpen && selectedProduct) {
+  <app-delete-product-modal 
+    [productId]="selectedProduct.id"
+    [productName]="selectedProduct.name || ''"
+    (closeModal)="closeModalAndRefresh()">
+  </app-delete-product-modal>
+}
+
+@if (isAddNewsModalOpen) {
+  <app-add-news-modal (closeModal)="closeNewsModals()"></app-add-news-modal>
+}
+
+@if (isManageNewsModalOpen) {
+  <app-manage-news-modal 
+    (closeModal)="closeNewsModals()"
+    (openUpdateModal)="openUpdateNewsModal($event)"
+    (toggleTicker)="loadDynamicTickerNews()">
+  </app-manage-news-modal>
+}
+
+@if (isUpdateNewsModalOpen && selectedNews) {
+  <app-update-news-modal 
+    [newsItem]="selectedNews"
+    (closeModal)="closeNewsModals()">
+  </app-update-news-modal>
+}

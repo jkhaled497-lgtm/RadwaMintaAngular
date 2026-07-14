@@ -32,16 +32,23 @@
           } }
         </div>
 
-        <div>
+        <div class="relative">
           <input
             formControlName="password"
-            class="px-3 py-2 rounded-lg w-full border outline-none"
-            type="password"
+            class="px-3 py-2 rounded-lg w-full border outline-none pr-10 rtl:pr-3 rtl:pl-10"
+            [type]="showPassword ? 'text' : 'password'"
             placeholder="{{ 'login.password' | translate }}"
           />
+          <button
+            type="button"
+            (click)="showPassword = !showPassword"
+            class="absolute right-3 ltr:right-3 rtl:left-3 rtl:right-auto top-[22px] -translate-y-1/2 text-gray-500 hover:text-[#7A4485] transition-colors"
+          >
+            <i class="fa-solid" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+          </button>
           @if (form.get('password')?.touched &&
           form.get('password')?.getError('required')) {
-          <p class="text-red-500 text-sm sm:text-base">
+          <p class="text-red-500 text-sm sm:text-base mt-1">
             {{ 'login.errors.passwordRequired' | translate }}
           </p>
           }
@@ -58,12 +65,20 @@
           </button>
         </div>
 
-        <a
-          routerLink="/forgot-password"
-          class="text-[#7A4485] font-semibold text-center"
-        >
-          {{ 'login.forgotPassword' | translate }}
-        </a>
+        <div class="flex justify-between items-center w-full mt-2 px-1">
+          <a
+            routerLink="/register"
+            class="text-[#7A4485] font-semibold text-center"
+          >
+            {{ 'NAV.REGISTER' | translate }}
+          </a>
+          <a
+            routerLink="/forgot-password"
+            class="text-[#7A4485] font-semibold text-center"
+          >
+            {{ 'login.forgotPassword' | translate }}
+          </a>
+        </div>
       </form>
     </div>
   </div>

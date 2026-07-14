@@ -4,10 +4,11 @@ import { NavbarComponent } from "./shared/components/navbar/navbar.component";
 import { FooterComponent } from "./shared/components/footer/footer.component";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateService } from '@ngx-translate/core';
+import { ChatComponent } from './pages/chat/chat.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, CarouselModule],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, CarouselModule, ChatComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
