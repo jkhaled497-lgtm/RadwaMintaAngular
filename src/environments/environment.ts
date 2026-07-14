@@ -1,4 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://your-live-api.com' // Replace with your actual live API URL
+    apiUrl: 'http://localhost:5124', // Local API
+    FilesURL: 'http://localhost:5124/files/' // Local API
+    
 };
