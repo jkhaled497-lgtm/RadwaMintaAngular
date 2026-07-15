@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Client, ClientService } from '../../core/services/client.service';
 import { environment } from '../../../environments/environment';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './client.component.html',
   styleUrl: './client.component.scss'
 })
@@ -71,8 +73,8 @@ export class ClientComponent implements OnInit {
 
   getUserTypeLabel(type: number): string {
     switch (type) {
-      case 1: return 'Normal User';
-      case 2: return 'Supplier';
+      case 0: return 'REGISTER_PAGE.CLIENT';
+      case 1: return 'REGISTER_PAGE.SUPPLIER';
       case 3: return 'Admin';
       default: return 'Unknown';
     }

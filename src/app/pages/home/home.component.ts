@@ -1,5 +1,7 @@
 import { MediaService } from './../../core/services/media/media.service';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { StorySectionComponent } from "../../shared/components/story-section/story-section.component";
 import { ReviewsSectionComponent } from "../../shared/components/reviews-section/reviews-section.component";
 import { FeaturedProductsComponent } from "../../shared/components/featured-products/featured-products.component";
@@ -8,6 +10,8 @@ import { HeroCounterComponent } from "../../shared/components/hero-counter/hero-
 import { NewsTickerComponent } from "../../shared/components/news-ticker/news-ticker.component";
 import { Title, Meta } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { VisitorService } from '../../core/services/visitor.service';
 
 @Component({
   selector: 'app-home',
@@ -18,13 +22,14 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     ContactFormComponent,
     HeroCounterComponent,
     NewsTickerComponent,
-    TranslateModule
+    TranslateModule,
+    AsyncPipe
   ],
   templateUrl: './home.component.html',
   
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private title: Title,
     private meta: Meta,
@@ -32,9 +37,22 @@ export class HomeComponent implements OnInit {
   ) {}
 
   private readonly mediaService = inject(MediaService);
+  public visitorService = inject(VisitorService);
+  public platformId = inject(PLATFORM_ID);
+  public animatedVisitorCount: number = 0;
+  private visitorSub!: Subscription;
+  private animationFrameId?: number;
   isLoading: boolean = true;
   whatsAppLink: string = '';
   faqs = [{ open: false }, { open: false }, { open: false }, { open: false },{open:false}];
+
+  get formattedVisitorCount(): string {
+    if (this.animatedVisitorCount >= 100000) {
+      const thousands = Math.floor(this.animatedVisitorCount / 1000);
+      return `+${thousands}K`;
+    }
+    return this.animatedVisitorCount.toString();
+  }
 
   ngOnInit() {
     const currentLang = this.translate.currentLang || 'en';
@@ -64,6 +82,38 @@ export class HomeComponent implements OnInit {
     }
 
     this.getWhatsAppLink();
+
+    this.visitorSub = this.visitorService.visitorCount$.subscribe(count => {
+      this.animateCount(this.animatedVisitorCount, count);
+    });
+  }
+
+  animateCount(start: number, end: number) {
+    if (!isPlatformBrowser(this.platformId)) {
+      this.animatedVisitorCount = end;
+      return;
+    }
+
+    if (start === end) return;
+    const duration = 2000; // 2 seconds animation
+    const startTime = performance.now();
+
+    const step = (currentTime: number) => {
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      
+      this.animatedVisitorCount = Math.floor(start + (end - start) * easeOut);
+
+      if (progress < 1) {
+        this.animationFrameId = requestAnimationFrame(step);
+      } else {
+        this.animatedVisitorCount = end;
+      }
+    };
+
+    if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
+    this.animationFrameId = requestAnimationFrame(step);
   }
 
   toggleFaq(index: number) {
@@ -77,5 +127,10 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.visitorSub) this.visitorSub.unsubscribe();
+    if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
   }
 }

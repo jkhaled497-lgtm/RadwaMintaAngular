@@ -1,10 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Inject, PLATFORM_ID, Optional, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./shared/components/navbar/navbar.component";
 import { FooterComponent } from "./shared/components/footer/footer.component";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateService } from '@ngx-translate/core';
 import { ChatComponent } from './pages/chat/chat.component';
+import { VisitorService } from './core/services/visitor.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +14,25 @@ import { ChatComponent } from './pages/chat/chat.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'radwaminta';
     isLoading: any;
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService, 
+    private VisitorService: VisitorService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.translate.setDefaultLang('en');
     // this.translate.use('en');
     
   }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.VisitorService.init();
+    }
+  }
+
 @HostListener('document:mousemove', ['$event'])
 onMouseMove(e: MouseEvent) {
   document.documentElement.style.setProperty('--mx', `${e.clientX}px`);

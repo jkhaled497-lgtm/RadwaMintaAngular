@@ -220,41 +220,54 @@
   <div class="container">
       <span class="px-5 py-2 bg-green-200 border-2 rounded-xl mx-auto block w-fit capitalize font-medium">{{ 'certificates.certificate' | translate }}</span>
     <h2 class="text-center font-semibold text-lg sm:text-xl md:text-2xl lg:text-3xl mt-4">{{'certificates.title' | translate}}</h2>
-    <div class="flex flex-col sm:flex-row gap-5 mt-10">
-      <div>
-        <span class="flex-shrink-0 w-10 h-10 rounded-full border-2 flex justify-center items-center">
-          1
-        </span>
-        <div class="mt-3">
-          <h3 class="font-semibold text-lg sm:text-xl md:text-2xl lg:text-3xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+      <!-- Certificate 1 -->
+      <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(76,227,168,0.15)] hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col group">
+        <!-- Image Container -->
+        <div class="relative bg-gray-50/50 aspect-[4/3] flex justify-center items-center p-6 border-b border-gray-100 overflow-hidden">
+          <!-- Background Glow Effect on Hover -->
+          <div class="absolute inset-0 bg-[#4CE3A8]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <!-- Number Badge -->
+          <span class="absolute top-4 start-4 w-10 h-10 bg-gradient-to-tr from-[#4CE3A8] to-[#36b986] text-white font-bold rounded-full shadow-md flex justify-center items-center z-20">
+            1
+          </span>
+          <img class="max-w-full max-h-full object-contain shadow-sm rounded-lg border border-gray-200 bg-white relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" src="/images/certificate1.png" alt="Food Safety Certificate">
+        </div>
+        <!-- Content Container -->
+        <div class="p-6 flex flex-col flex-grow relative">
+          <h3 class="font-bold text-xl md:text-2xl text-gray-800 mb-3 group-hover:text-[#2BA274] transition-colors duration-300">
             {{ 'certificates.food_safety_title' | translate }}
           </h3>
-          <p>
+          <p class="text-gray-600 text-sm md:text-base leading-relaxed flex-grow">
             {{ 'certificates.food_safety_desc' | translate }}
           </p>
-          <picture class="mt-2">
-            <img class="w-full" src="/images/certificate1.png" alt="image">
-          </picture>
         </div>
       </div>
 
-      <div>
-        <span class="flex-shrink-0 w-10 h-10 rounded-full border-2 flex justify-center items-center">
-          2
-        </span>
-        <div class="mt-3">
-          <h3 class="font-semibold text-lg sm:text-xl md:text-2xl lg:text-3xl">
+      <!-- Certificate 2 -->
+      <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(76,227,168,0.15)] hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col group">
+        <!-- Image Container -->
+        <div class="relative bg-gray-50/50 aspect-[4/3] flex justify-center items-center p-6 border-b border-gray-100 overflow-hidden">
+          <!-- Background Glow Effect on Hover -->
+          <div class="absolute inset-0 bg-[#4CE3A8]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          <!-- Number Badge -->
+          <span class="absolute top-4 start-4 w-10 h-10 bg-gradient-to-tr from-[#4CE3A8] to-[#36b986] text-white font-bold rounded-full shadow-md flex justify-center items-center z-20">
+            2
+          </span>
+          <img class="max-w-full max-h-full object-contain shadow-sm rounded-lg border border-gray-200 bg-white relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" src="/images/newiso.jpg" alt="ISO Certificate">
+        </div>
+        <!-- Content Container -->
+        <div class="p-6 flex flex-col flex-grow relative">
+          <h3 class="font-bold text-xl md:text-2xl text-gray-800 mb-3 group-hover:text-[#2BA274] transition-colors duration-300">
             {{ 'certificates.iso_title' | translate }}
           </h3>
-          <p>
+          <p class="text-gray-600 text-sm md:text-base leading-relaxed flex-grow">
             {{ 'certificates.iso_desc' | translate }}
           </p>
-          <picture class="mt-2">
-            <img class="w-full" src="/images/certificate2.png" alt="image">
-          </picture>
         </div>
       </div>
-
     </div>
   </div>
 </div>

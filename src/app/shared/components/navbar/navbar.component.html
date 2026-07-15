@@ -13,7 +13,7 @@
           <li><a routerLink="/quality" routerLinkActive="active">{{ 'NAV.QUALITY' | translate }}</a></li>
           <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT_US' | translate }}</a></li>
           @if (isAdmin) {
-            <li><a routerLink="/client" routerLinkActive="active">Clients</a></li>
+            <li><a routerLink="/client" routerLinkActive="active">{{ 'NAV.CLIENTS' | translate }}</a></li>
           }
           <li><a routerLink="/radwacv" routerLinkActive="active">{{'footer.owner' | translate}}</a></li>
 
@@ -63,6 +63,17 @@
                     {{ 'NAV.ACCOUNT_SETTINGS' | translate }}
                   </a>
                 </li> -->
+                @if (isAdmin) {
+                <li>
+                  <a routerLink="/social-media-links" (click)="toggleProfileDropdown()" class="flex items-center gap-3 px-5 py-3 hover:bg-[#4CE3A8]/10 hover:text-[#2BA274] transition-all cursor-pointer text-sm m-0 font-medium group">
+                    <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-white flex items-center justify-center text-gray-400 group-hover:text-[#2BA274] transition-colors">
+                      <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    {{ 'NAV.SOCIAL_MEDIA' | translate }}
+                  </a>
+                </li>
+                }
+
                 <li class="border-t border-gray-50 mt-2 pt-2">
                   <a (click)="signOut()" class="flex items-center gap-3 px-5 py-3 hover:bg-red-50 text-red-600 transition-all cursor-pointer text-sm m-0 font-medium group">
                     <div class="w-8 h-8 rounded-full bg-red-50/50 group-hover:bg-white flex items-center justify-center text-red-400 group-hover:text-red-500 transition-colors">
@@ -97,13 +108,16 @@
     <li><a routerLink="/quality" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.QUALITY' | translate }}</a></li>
     <li><a routerLink="/contact" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CONTACT_US' | translate }}</a></li>
     @if (isAdmin) {
-      <li><a routerLink="/client" routerLinkActive="active" (click)="toggleSidebar()">Clients</a></li>
+      <li><a routerLink="/client" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CLIENTS' | translate }}</a></li>
     }
     <li><a routerLink="/radwacv" routerLinkActive="active" (click)="toggleSidebar()">{{'footer.owner' | translate}}</a></li>
     @if (isLoggedIn) {
       <li class="w-2/3 mx-auto border-t border-gray-200 mt-2 pt-6"></li>
       <li class="mx-auto text-[#4CE3A8] font-bold max-w-[200px] truncate mb-2" dir="ltr" style="direction: rtl; text-align: center;"><i class="fa-solid fa-user mr-2"></i> {{ userEmail }}</li>
       <li><a routerLink="/profile" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.PROFILE' | translate }}</a></li>
+      @if (isAdmin) {
+        <li><a routerLink="/social-media-links" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.SOCIAL_MEDIA' | translate }}</a></li>
+      }
       <!-- <li><a class="cursor-pointer" (click)="toggleSidebar()">{{ 'NAV.ACCOUNT_SETTINGS' | translate }}</a></li> -->
       <li><a class="cursor-pointer text-red-500 hover:text-red-600" (click)="signOut(); toggleSidebar()">{{ 'NAV.SIGN_OUT' | translate }}</a></li>
     }

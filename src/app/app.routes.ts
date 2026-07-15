@@ -121,5 +121,14 @@ export const routes: Routes = [
         m => m.ClientComponent
       ),
   },
+  {
+    path: 'social-media-links',
+    title: 'social media links',
+    canActivate: [adminGuard],
+    loadComponent: () =>
+      import('./pages/social-media-links/social-media-links.component').then(
+        m => m.SocialMediaLinksComponent
+      ),
+  },
   { path: '**', redirectTo: 'login' }
 ];
