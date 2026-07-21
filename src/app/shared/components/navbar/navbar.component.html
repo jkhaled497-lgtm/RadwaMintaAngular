@@ -12,6 +12,8 @@
           <li><a routerLink="/story" routerLinkActive="active">{{ 'NAV.OUR_STORY' | translate }}</a></li>
           <li><a routerLink="/quality" routerLinkActive="active">{{ 'NAV.QUALITY' | translate }}</a></li>
           <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+          <li><a routerLink="/login" routerLinkActive="active">{{ 'login.title' | translate }}</a></li>
+          
           @if (isAdmin) {
             <li><a routerLink="/client" routerLinkActive="active">{{ 'NAV.CLIENTS' | translate }}</a></li>
           }
@@ -102,11 +104,14 @@
     <span class="sr-only">{{ 'NAV.CLOSE' | translate }}</span>
   </span>
   <ul class="flex flex-col text-center list-none gap-7">
+
     <li><a routerLink="/home" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.HOME' | translate }}</a></li>
     <li><a routerLink="/products" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.PRODUCTS' | translate }}</a></li>
     <li><a routerLink="/story" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.OUR_STORY' | translate }}</a></li>
     <li><a routerLink="/quality" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.QUALITY' | translate }}</a></li>
     <li><a routerLink="/contact" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CONTACT_US' | translate }}</a></li>
+        <li><a routerLink="/login" routerLinkActive="active" (click)="toggleSidebar()">{{ 'login.title' | translate }}</a></li>
+
     @if (isAdmin) {
       <li><a routerLink="/client" routerLinkActive="active" (click)="toggleSidebar()">{{ 'NAV.CLIENTS' | translate }}</a></li>
     }

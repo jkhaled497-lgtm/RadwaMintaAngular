@@ -57,6 +57,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   environmentImageUrl: any;
 
   toggleChat(): void {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     if (this.isChatOpen) {
       this.isChatOpen = false;
       return;

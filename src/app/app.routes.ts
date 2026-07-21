@@ -10,19 +10,19 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     title: 'home',
-    canActivate: [adminGuard]
+    // canActivate: [adminGuard]
   },
   {
     path: 'products',
     title: 'products',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/products/products.component').then(m => m.ProductsComponent),
   },
   {
     path: 'products/:id',
     title: 'product',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/product-details/product-details.component').then(
         m => m.ProductDetailsComponent
@@ -31,42 +31,42 @@ export const routes: Routes = [
   {
     path: 'contact',
     title: 'contact us',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/contact/contact.component').then(m => m.ContactComponent),
   },
   {
     path: 'quality',
     title: 'quality',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/quality/quality.component').then(m => m.QualityComponent),
   },
   {
     path: 'story',
     title: 'our story',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/story/story.component').then(m => m.StoryComponent),
   },
   {
     path: 'radwacv',
     title: 'Radwa CV',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/radwa-cv/radwa-cv.component').then(m => m.RadwaCVComponent),
   },
   {
     path: 'profile',
     title: 'profile',
-    canActivate: [adminGuard],
+     canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/user-profile/user-profile.component').then(m => m.UserProfileComponent),
   },
   {
     path: 'login',
     title: 'login',
-    canActivate: [loginGuard],
+    //  canActivate: [loginGuard],
     loadComponent: () =>
       import('./pages/login/login.component').then(m => m.LoginComponent),
   },
@@ -79,7 +79,7 @@ export const routes: Routes = [
   {
     path: 'forgot-password',
     title: 'forgot password',
-    canActivate: [loginGuard],
+     canActivate: [loginGuard],
     loadComponent: () =>
       import('./pages/forgot-password/forgot-password.component').then(
         m => m.ForgotPasswordComponent
@@ -88,7 +88,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     title: 'dashboard',
-    canActivate: [adminGuard],
+    //canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/dashboard/dashboard.component').then(
         m => m.DashboardComponent
@@ -97,7 +97,7 @@ export const routes: Routes = [
   {
     path: 'dashboard/add-product',
     title: 'add product',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/add-product/add-product.component').then(
         m => m.AddProductComponent
@@ -106,7 +106,7 @@ export const routes: Routes = [
   {
     path: 'dashboard/update-product/:id',
     title: 'update product',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/update-product/update-product.component').then(
         m => m.UpdateProductComponent
@@ -124,7 +124,7 @@ export const routes: Routes = [
   {
     path: 'social-media-links',
     title: 'social media links',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadComponent: () =>
       import('./pages/social-media-links/social-media-links.component').then(
         m => m.SocialMediaLinksComponent

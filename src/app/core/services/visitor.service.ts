@@ -32,16 +32,16 @@ export class VisitorService {
       .then(() => {
         console.log('SignalR connection established for VisitorHub');
         
-        // 1. Check local storage
-        const hasVisited = localStorage.getItem('hasVisited');
-        const isFirstVisit = !hasVisited;
+        // // 1. Check local storage
+        // const hasVisited = localStorage.getItem('hasVisited');
+        // const isFirstVisit = !hasVisited;
         
-        if (isFirstVisit) {
-            localStorage.setItem('hasVisited', 'true');
-        }
+        // if (isFirstVisit) {
+        //     localStorage.setItem('hasVisited', 'true');
+        // }
 
         // 2. Register visit with backend hub
-        this.hubConnection?.invoke('RegisterVisit', isFirstVisit)
+        this.hubConnection?.invoke('RegisterVisit', true)
             .catch(err => console.error('Error invoking RegisterVisit:', err));
       })
       .catch(err => console.error('Error establishing SignalR connection:', err));
